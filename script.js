@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', checkFormValidity);
 // Tambahkan event listener untuk setiap input yang berubah atau diketik
 if (contactForm) {
     contactForm.addEventListener('input', checkFormValidity);
-    // Jika ada kasus perubahan (misal dari autocomplete), bisa tambahkan 'change' event
-    // contactForm.addEventListener('change', checkFormValidity);
 }
 
 if (openModalBtn && contactModal && modalCloseBtn) {
