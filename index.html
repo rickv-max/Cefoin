@@ -6,6 +6,11 @@
   <title>CEFOIN</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    .hidden-section {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -36,7 +41,7 @@
     </div>
   </section>
 
-  <!-- TENTANG KAMI (tetap ada tapi tidak masuk menu) -->
+  <!-- TENTANG KAMI -->
   <section class="section-content" id="tentang">
     <div class="content-box">
       <h2>Tentang Kami</h2>
@@ -45,33 +50,31 @@
     </div>
   </section>
 
-  <!-- LAYANAN -->
-  <section class="section-content" id="layanan">
+  <!-- LAYANAN (disembunyikan default) -->
+  <section class="section-content hidden-section" id="layanan">
     <div class="content-box">
       <h2>Layanan Kami</h2>
       <p>CEFOIN menyediakan layanan pendampingan hukum, konseling psikologis, advokasi, dan mediasi komunitas untuk penyintas kekerasan seksual.</p>
     </div>
   </section>
 
-  <!-- PROGRAM -->
-  <section class="section-content" id="program">
+  <!-- PROGRAM (disembunyikan default) -->
+  <section class="section-content hidden-section" id="program">
     <div class="content-box">
       <h2>Program</h2>
       <p>Kami aktif menjalankan berbagai program seperti penyuluhan hukum, kampanye kesadaran publik, pelatihan relawan, dan edukasi gender di sekolah dan komunitas.</p>
     </div>
   </section>
 
-  <!-- TIM KAMI -->
-  <section class="section-content" id="tim">
+  <!-- TIM KAMI (disembunyikan default) -->
+  <section class="section-content hidden-section" id="tim">
     <div class="content-box">
       <h2>Tim Kami</h2>
       <p>Tim kami terdiri dari advokat profesional, psikolog berpengalaman, dan relawan yang berdedikasi dalam memperjuangkan keadilan bagi penyintas.</p>
     </div>
   </section>
 
-  <!-- FORMULIR AJUKAN BANTUAN (jika ingin diaktifkan kembali) -->
-  <!-- Modal Form (opsional, bisa aktif jika tombol diklik) -->
-
+  <!-- SCRIPT -->
   <script>
     function toggleMenu() {
       const navLinks = document.getElementById("navLinks");
@@ -80,8 +83,26 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       const navItems = document.querySelectorAll(".nav-links li a");
+      const sections = ["layanan", "program", "tim"];
+
       navItems.forEach(item => {
-        item.addEventListener("click", () => {
+        item.addEventListener("click", (e) => {
+          const target = item.getAttribute("href").substring(1);
+
+          // Sembunyikan semua yang ada di daftar
+          sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) section.style.display = "none";
+          });
+
+          // Tampilkan hanya bagian yang diklik
+          const selected = document.getElementById(target);
+          if (selected) {
+            selected.style.display = "block";
+            selected.scrollIntoView({ behavior: "smooth" });
+          }
+
+          // Tutup menu mobile
           document.getElementById("navLinks").classList.remove("active");
         });
       });
