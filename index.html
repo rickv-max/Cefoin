@@ -2,54 +2,56 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Center For Intersectional - Bantuan Hukum Kekerasan Seksual</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEFOIN</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
     <nav>
       <div class="logo">
         <a href="#beranda">
-          <img src="https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2047.png" alt="Logo Center For Intersectional" />
+          <img src="https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2047.png" alt="Logo CEFOIN" />
         </a>
       </div>
-      <div class="hamburger" id="hamburger">☰</div>
-      <ul class="nav-links" id="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#beranda">Beranda</a></li>
-        <li><a href="#tentang">Tentang Kami</a></li>
-        <li><a href="#layanan">Layanan</a></li>
-        <li><a href="#sumber-daya">Sumber Daya</a></li>
-        <li><a href="#kontak" class="btn-primary">Minta Bantuan</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak" class="btn-primary">Kontak</a></li>
       </ul>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="hero">
-      <div class="hero-content">
-        <h1>Selamat Datang di <span class="highlight">Center For Intersectional</span></h1>
-        <p>Kami hadir untuk mendampingi Anda dalam menghadapi kekerasan seksual secara hukum dan empati.</p>
-        <a href="#kontak" class="btn-primary">Hubungi Kami</a>
-      </div>
-    </section>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Selamat Datang di Center For Intersectional</h1>
+      <p>Mewujudkan ruang aman dan akses keadilan untuk penyintas</p>
+      <a href="#tentang" class="btn-primary">Pelajari Lebih Lanjut</a>
+    </div>
+  </section>
 
-    <!-- Tentang Kami -->
-    <section id="tentang" class="section-content">
-      <div class="container">
-        <h2>Tentang Kami</h2>
-        <p>
-          <strong>Center For Intersectional</strong> adalah pusat bantuan hukum dan advokasi yang fokus pada isu kekerasan seksual dan ketidakadilan gender. Kami hadir untuk memberikan pendampingan, edukasi hukum, dan ruang aman bagi setiap individu yang membutuhkan.
-        </p>
-        <p>
-          Dengan pendekatan interseksional, kami percaya bahwa setiap orang memiliki hak untuk didengar, dilindungi, dan dipulihkan tanpa diskriminasi.
-        </p>
-      </div>
-    </section>
-  </main>
+  <!-- TENTANG KAMI -->
+  <section class="section-content" id="tentang">
+    <div class="content-box">
+      <h2>Tentang Kami</h2>
+      <p>
+        CEFOIN adalah komunitas yang berdedikasi untuk memberikan pendampingan hukum dan dukungan komprehensif bagi penyintas kekerasan seksual. Misi kami adalah menciptakan ruang aman, memberikan akses keadilan, dan mengadvokasi hak-hak penyintas. Kami percaya bahwa setiap individu berhak mendapatkan keadilan dan dukungan penuh dalam menghadapi trauma dan proses hukum yang kompleks.
+      </p>
+      <p>
+        Dengan tim profesional dan relawan yang berempati, kami berkomitmen untuk menjadi garda terdepan dalam memperjuangkan hak-hak anak dan perempuan, membangun kesadaran, serta mengedukasi masyarakat tentang pentingnya pencegahan kekerasan seksual dan penanganan yang tepat bagi korban.
+      </p>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
