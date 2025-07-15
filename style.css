@@ -1,3 +1,11 @@
+/* Atur box-sizing secara global untuk mencegah masalah overflow */
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 /* General Styling */
 body {
     font-family: 'Open Sans', sans-serif;
@@ -5,7 +13,7 @@ body {
     line-height: 1.8;
     color: #4a4a4a;
     background-color: #f8f9fa;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Pastikan tidak ada scrollbar horizontal */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,7 +36,7 @@ ul {
 /* Header & Navigation */
 header {
     background: #ffffff; /* Ini akan ditimpa oleh background nav */
-    padding: 0; /* Hapus padding header agar background nav bisa penuh */
+    padding: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
@@ -39,58 +47,43 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw; /* **PERUBAHAN KRUSIAL:** Lebar penuh layar (viewport width) */
-    margin: 0 auto;
+    width: 100%; /* Lebar 100% dari parent (header) */
+    max-width: 1200px; /* Pertahankan max-width agar konten nav terpusat di desktop */
+    margin: 0 auto; /* Pusatkan nav */
     padding: 0 25px; /* Padding konten di dalam nav, agar tidak menempel tepi */
     position: relative;
-    min-height: 90px; /* Tinggi NAV yang sedikit lebih besar agar logo lebih terlihat */
+    min-height: 90px; /* Tinggi NAV yang tetap */
 
     /* **LOGO SEBAGAI BACKGROUND PENUH NAV - TANPA TRANSPARANSI** */
-    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=8') no-repeat center center;
-    background-size: cover; /* Logo akan mengisi penuh NAV (mungkin terpotong sedikit) */
-    /* Jika Anda ingin SELURUH LOGO terlihat tanpa terpotong (mungkin ada ruang kosong di sisi), gunakan: */
-    /* background-size: contain; */ 
+    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=9') no-repeat center center;
+    background-size: contain; /* **PERUBAHAN KRUSIAL:** Logo utuh tanpa terpotong. Mungkin ada ruang di sisi. */
+    /* Jika Anda ingin logo benar-benar mengisi penuh tanpa ruang (tapi berisiko terpotong): */
+    /* background-size: cover; */
     
     overflow: hidden; /* Pastikan tidak ada scrollbar dari background */
 }
 
 /* **NAV OVERLAY (TRANSPARANSI LOGO) DIHAPUS TOTAL** */
-/* Baris kode nav::before di bawah ini DIKOMENTARI atau DIHAPUS. */
-/*
-nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.85);
-    z-index: 0;
-}
-*/
+/* nav::before { ... } - Baris ini harus Dihapus atau Dikomentari */
 
-/* Gaya untuk div.logo yang sekarang kosong (hanya sebagai placeholder untuk flexbox) */
-.logo {
-    /* **PERUBAHAN:** Berikan lebar yang cukup agar logo terlihat di sisi kiri */
-    flex-basis: 250px; /* Berikan lebar tetap untuk area logo di nav */
-    flex-shrink: 0; /* Jangan biarkan mengecil */
-    height: 100%; /* Mengisi tinggi nav */
-    display: flex;
-    justify-content: flex-start; /* Logo akan di kiri */
-    align-items: center;
-    position: relative;
-    z-index: 1; /* Pastikan di atas background nav */
-    background: none; 
-    min-width: unset;
-    box-shadow: none;
-    padding: 0;
-}
+
+/* Gaya untuk div.logo yang sudah dihapus dari HTML. Pastikan tidak ada gaya ini di CSS. */
+/* .logo { display: none; } - Ini tidak lagi dibutuhkan jika sudah dihapus dari HTML */
+
 
 .nav-links {
     display: flex;
     gap: 35px;
     position: relative;
     z-index: 1; /* Pastikan di atas background nav */
+    flex-grow: 1; /* Agar menu mengisi ruang yang tersedia di kanan */
+    justify-content: flex-end; /* Dorong menu ke kanan */
+}
+
+.nav-links li:first-child {
+    margin-right: auto; /* **PERUBAHAN:** Dorong item pertama (Beranda) ke kiri, buat ruang untuk logo */
+    /* Opsional: Sesuaikan jarak logo dari kiri */
+    margin-left: 20px; /* Contoh: jarak logo dari sisi kiri nav */
 }
 
 .nav-links a {
@@ -140,7 +133,7 @@ nav::before {
 
 /* Hamburger Menu */
 .hamburger {
-    display: none;
+    display: none; /* Akan diaktifkan di media query untuk mobile */
     font-size: 2.2rem;
     cursor: pointer;
     background: none;
@@ -311,14 +304,19 @@ footer {
 @media (max-width: 768px) {
     nav {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end; /* **PERUBAHAN:** Dorong semua konten nav ke kanan di mobile */
         gap: 0;
         min-height: 60px;
     }
 
-    .logo {
-        height: 100%;
-        flex-basis: 150px; /* Lebar area logo di mobile */
+    .nav-links {
+        flex-grow: unset; /* Hapus flex-grow di mobile */
+        justify-content: flex-start; /* Sejajarkan ke kiri di menu mobile */
+        margin-right: auto; /* Dorong ke kiri agar hamburger di kanan */
+    }
+
+    .nav-links li:first-child {
+        margin-left: 0; /* Hapus margin kiri di mobile */
     }
 
     .nav-links {
@@ -361,7 +359,8 @@ footer {
 
     .hamburger {
         display: block;
-        color: #333; /* Warna hamburger di mobile */
+        color: #fff; /* Warna hamburger di mobile tetap putih */
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tetap ada bayangan di mobile */
     }
 
     #hero {
@@ -404,11 +403,11 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .logo h1 {
-        font-size: 1.5rem;
+    .nav-links {
+        padding: 15px; /* Kurangi padding di layar sangat kecil */
     }
-    .logo p {
-        font-size: 0.7rem;
+    .nav-links a {
+        font-size: 0.95rem;
     }
     #hero h2 {
         font-size: 2rem;
