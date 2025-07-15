@@ -45,66 +45,41 @@ nav {
     position: relative;
 }
 
-/* Modifikasi untuk Logo */
+/* Modifikasi untuk Logo Container */
 .logo {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    /* URL LOGO ANDA */
-    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=1') no-repeat center center;
-    
-    /* **PERUBAHAN UTAMA DI SINI:** Logo akan mengisi area */
-    background-size: contain; /* Membuat logo terlihat penuh di dalam area tanpa terpotong */
-    background-position: center; /* Posisikan logo di tengah */
-    min-width: 350px; /* Pertahankan min-width agar area logo cukup luas */
-    
-    padding: 15px 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-/* Efek hover untuk logo background */
-.logo:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    justify-content: center; /* Pusatkan gambar logo secara horizontal */
+    align-items: center; /* Pusatkan gambar logo secara vertikal */
+    height: 60px; /* Atur tinggi container logo */
+    overflow: hidden; /* Pastikan gambar tidak keluar dari container */
+    padding: 0; /* Hapus padding lama, padding akan diatur di img */
+    flex-grow: 1; /* Biarkan area logo ini tumbuh */
+    /* Hapus semua background, min-width, box-shadow lama dari sini */
+    /* background: none; */
+    /* min-width: unset; */
+    /* box-shadow: none; */
 }
 
-/* **PERUBAHAN DI SINI:** Hapus total efek overlay putih (komentar baris kode ini) */
-/*
-.logo::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
-    z-index: 0;
-}
-*/
+/* Hapus juga :before karena logo sekarang adalah img, bukan background */
+/* .logo::before { display: none; } */
 
-.logo h1 {
-    margin: 0;
-    color: #fff; /* **PERUBAHAN DI SINI:** Warna teks utama logo menjadi putih */
-    font-size: 2.2rem;
-    font-weight: 700;
-    z-index: 1;
-    letter-spacing: -0.5px;
-    /* **PERUBAHAN DI SINI:** Tambahkan bayangan teks untuk keterbacaan */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5), -1px -1px 3px rgba(0,0,0,0.5); 
+
+/* Gaya untuk elemen gambar logo */
+.logo img {
+    max-width: 100%; /* Batasi lebar agar tidak melebihi container */
+    height: auto; /* Jaga aspek rasio */
+    display: block; /* Hapus spasi bawah default */
+    /* Jika logo ingin mengisi penuh tinggi/lebar container, gunakan object-fit */
+    object-fit: contain; /* Memastikan seluruh gambar terlihat di dalam container */
+    padding: 5px 0; /* Tambahkan sedikit padding vertikal jika perlu */
+    opacity: 1; /* Set opacity logo, sesuaikan jika perlu */
 }
 
-.logo p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #eee; /* **PERUBAHAN DI SINI:** Warna teks deskripsi logo menjadi abu-abu terang */
-    z-index: 1;
-    font-weight: 400;
-    /* **PERUBAHAN DI SINI:** Tambahkan bayangan teks untuk keterbacaan */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4), -1px -1px 2px rgba(0,0,0,0.4);
-}
+/* Atur warna teks h1 dan p agar tidak lagi di dalam .logo */
+/* Karena h1 dan p tidak lagi ada di .logo, gaya ini menjadi tidak relevan */
+/* Namun, jika Anda berencana menempatkan teks di tempat lain, perlu gaya baru */
+/* .logo h1, .logo p { display: none; } */
+
 
 .nav-links {
     display: flex;
@@ -335,16 +310,13 @@ footer {
     }
 
     .logo {
-        background-size: 180px; /* Ukuran logo di background untuk ponsel */
-        background-position: center; /* Tetap di tengah */
-        min-width: unset; /* Hapus min-width di mobile jika tidak perlu */
+        height: 50px; /* Tinggi logo di mobile */
+        /* min-width: unset; */ /* min-width tidak perlu di sini */
     }
-
-    .logo h1 {
-        font-size: 1.8rem;
-    }
-    .logo p {
-        font-size: 0.75rem;
+    .logo img {
+        /* Sesuaikan ukuran logo di background untuk ponsel */
+        max-width: 100%;
+        height: auto;
     }
 
     .nav-links {
