@@ -5,8 +5,7 @@ const navLinks = document.getElementById('nav-links');
 // Fungsi untuk toggle menu
 function toggleMenu() {
     navLinks.classList.toggle('active');
-    // Opsional: untuk mencegah scrolling body saat menu mobile terbuka
-    // document.body.classList.toggle('no-scroll'); 
+    // document.body.classList.toggle('no-scroll'); // Opsional: untuk mencegah scrolling body saat menu mobile terbuka
 }
 
 // Tambahkan event listener ke tombol hamburger
@@ -36,19 +35,16 @@ const revealableElements = document.querySelectorAll('.revealable');
 const handleIntersection = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Jika elemen masuk viewport
             entry.target.classList.add('revealed');
-            // Hentikan observasi setelah di-reveal (opsional, jika hanya ingin sekali animasi)
             observer.unobserve(entry.target); 
         } else {
-            // Opsional: Jika elemen keluar viewport, reset untuk bisa di-reveal lagi
-            // entry.target.classList.remove('revealed');
+            // entry.target.classList.remove('revealed'); // Opsional: reset saat keluar viewport
         }
     });
 };
 
 const observer = new IntersectionObserver(handleIntersection, {
-    threshold: 0.2 // Berapa persen elemen harus terlihat untuk di-reveal (20%)
+    threshold: 0.2
 });
 
 revealableElements.forEach(element => {
@@ -57,23 +53,22 @@ revealableElements.forEach(element => {
 
 // Tambahan untuk item layanan agar muncul satu per satu (staggered)
 const layananGrid = document.querySelector('.layanan-grid');
-if (layananGrid) { // Pastikan elemen grid ada
+if (layananGrid) {
     const layananObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 let delay = 0;
-                // Ambil item anak dari grid
                 Array.from(entry.target.children).forEach((item, index) => {
                     setTimeout(() => {
                         item.classList.add('revealed');
                     }, delay);
-                    delay += 150; // Tambah delay untuk efek staggered
+                    delay += 150;
                 });
-                observer.unobserve(entry.target); // Hentikan observasi setelah di-reveal
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1 // Ketika 10% dari grid terlihat
+        threshold: 0.1
     });
     layananObserver.observe(layananGrid);
 }
