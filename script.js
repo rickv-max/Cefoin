@@ -6,18 +6,23 @@ const navLinks = document.getElementById('nav-links');
 if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
+        // Opsional: untuk menggeser body jika menu mobile terbuka
+        // document.body.classList.toggle('no-scroll'); 
     });
 
+    // Menutup menu saat salah satu link diklik (untuk pengalaman mobile yang lebih baik)
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             // Tutup menu hanya jika di layar kecil (lebar kurang dari atau sama dengan 768px)
             if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
+                // document.body.classList.remove('no-scroll'); 
             }
         });
     });
 } else {
-    console.warn("Hamburger menu atau nav-links tidak ditemukan di DOM. Periksa ID HTML.");
+    // Pesan ini akan muncul di console browser jika ada masalah dengan ID
+    console.warn("Error: Elemen dengan ID 'hamburger-menu' atau 'nav-links' tidak ditemukan. Pastikan ID di HTML sudah benar.");
 }
 
 
