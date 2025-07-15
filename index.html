@@ -10,9 +10,9 @@
 <body>
     <header>
         <nav>
-            <div>
-                </div>
-
+            <div class="logo">
+                <img src="images/logo.jpg" alt="Logo" style="height: 40px;">
+            </div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#beranda">Beranda</a></li>
                 <li><a href="#tentang">Tentang Kami</a></li>
@@ -26,86 +26,13 @@
     <main>
         <section id="hero">
             <div class="hero-content">
-                <h2>Anda Tidak Sendiri. Kami Siap Mendampingi.</h2>
-                <p>Mendampingi penyintas kekerasan seksual dengan bantuan hukum dan dukungan yang berpihak pada keadilan.</p>
-                <a href="#" class="btn-hero" id="open-modal-btn">Dapatkan Bantuan Sekarang</a>
+                <h1>Selamat Datang di CEFOIN</h1>
+                <p>Kami hadir untuk mendampingi Anda dalam menghadapi kekerasan seksual secara hukum dan empati.</p>
+                <a href="#kontak" class="btn-primary">Hubungi Kami</a>
             </div>
         </section>
 
-        <section id="tentang" class="section-padded revealable">
-            <h2>Tentang Kami</h2>
-            <p>Kami adalah komunitas yang berdedikasi untuk memberikan pendampingan hukum dan dukungan komprehensif bagi penyintas kekerasan seksual. Misi kami adalah menciptakan ruang aman, memberikan akses keadilan, dan mengadvokasi hak-hak penyintas. Kami percaya bahwa setiap individu berhak mendapatkan keadilan dan dukungan penuh dalam menghadapi trauma dan proses hukum yang kompleks.</p>
-            <p>Dengan tim profesional dan relawan yang berempati, kami berkomitmen untuk menjadi garda terdepan dalam memperjuangkan hak-hak anak dan perempuan, membangun kesadaran, serta mengedukasi masyarakat tentang pentingnya pencegahan kekerasan seksual dan penanganan yang tepat bagi korban.</p>
-        </section>
-
-        <section id="layanan" class="section-padded revealable">
-            <h2>Layanan Kami</h2>
-            <div class="layanan-grid">
-                <div class="layanan-item">
-                    <h3>Konsultasi Hukum</h3>
-                    <p>Memberikan konsultasi awal yang aman dan rahasia untuk memahami situasi, hak-hak hukum, dan opsi terbaik bagi penyintas.</p>
-                </div>
-                <div class="layanan-item">
-                    <h3>Pendampingan Proses Hukum</h3>
-                    <p>Mendampingi penyintas di setiap tahapan proses hukum, mulai dari pelaporan ke kepolisian, penyelidikan, hingga persidangan, memastikan hak-hak mereka terpenuhi.</p>
-                </div>
-                <div class="layanan-item">
-                    <h3>Edukasi & Pencegahan</h3>
-                    <p>Mengadakan lokakarya, seminar, dan kampanye untuk meningkatkan kesadaran masyarakat tentang kekerasan seksual, pentingnya konsen, dan cara pencegahannya.</p>
-                </div>
-                <div class="layanan-item">
-                    <h3>Dukungan Psikososial</h3>
-                    <p>Menyediakan akses ke sumber daya dukungan psikososial dan konseling untuk membantu penyintas dalam pemulihan trauma mereka.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="kontak" class="section-padded">
-            <h2>Kontak Kami</h2>
-            <p class="text-center">Jika Anda atau seseorang yang Anda kenal membutuhkan informasi lebih lanjut, jangan ragu untuk menghubungi kami.</p>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Informasi Kontak</h3>
-                    <p><i class="icon-phone"></i> Telepon: (021) 123-4567</p>
-                    <p><i class="icon-whatsapp"></i> WhatsApp: +62 812-3456-7890</p>
-                    <p><i class="icon-mail"></i> Email: info@centerforintersectional.org</p>
-                    <p><i class="icon-location"></i> Alamat: Jl. Contoh No. 123, Kota Keadilan, Indonesia</p>
-                    <p>Jam Kerja: Senin - Jumat, 09:00 - 17:00 WIB</p>
-                </div>
-            </div>
-        </section>
+        <!-- Konten lainnya di sini -->
     </main>
-
-    <footer>
-        <p>&copy; 2025 Center For Intersectional. Semua Hak Dilindungi.</p>
-    </footer>
-
-    <div id="contact-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close-btn">&times;</button> <h3>Kirim Pesan Kepada Kami</h3>
-            <p class="disclaimer-modal">Jika Anda membutuhkan bantuan hukum terkait kekerasan seksual, jangan ragu untuk menghubungi kami. Kerahasiaan Anda adalah prioritas utama kami.</p>
-            <form action="#" method="POST" id="contact-form"> <div class="form-group">
-                    <label for="modal-name">Nama Lengkap</label>
-                    <input type="text" id="modal-name" name="name" placeholder="Nama Lengkap Anda" required>
-                </div>
-                <div class="form-group">
-                    <label for="modal-domicile">Domisili</label> <input type="text" id="modal-domicile" name="domicile" placeholder="Domisili Anda" required> </div>
-                <div class="form-group">
-                    <label for="modal-phone">Nomor Telepon</label>
-                    <input type="tel" id="modal-phone" name="phone" placeholder="Nomor Telepon Anda" required>
-                </div>
-                <div class="form-group">
-                    <label for="modal-subject">Subjek Bantuan</label>
-                    <input type="text" id="modal-subject" name="subject" placeholder="Misal: Permintaan Konsultasi Hukum" required>
-                </div>
-                <div class="form-group">
-                    <label for="modal-problem">Masalah Anda</label> <textarea id="modal-problem" name="problem" rows="5" placeholder="Jelaskan masalah Anda di sini." required></textarea> </div>
-                <button type="submit" class="btn-submit" id="submit-form-btn" disabled>Kirim Pesan</button>
-            </form>
-            <p class="disclaimer-modal">Kami akan merespons secepat mungkin. Informasi Anda akan dijaga kerahasiaannya.</p>
-        </div>
-    </div>
-    <script src="script.js?v=10"></script>
 </body>
 </html>
