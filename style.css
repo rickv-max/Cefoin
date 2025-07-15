@@ -45,43 +45,54 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between; /* Menempatkan logo dan hamburger di sisi berlawanan */
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 25px;
+    width: 100%; /* Lebar 100% dari parent (header) */
+    max-width: 1200px; /* Pertahankan max-width agar konten nav terpusat di desktop */
+    margin: 0 auto; /* Pusatkan nav */
+    padding: 0 25px; /* Padding konten di dalam nav, agar tidak menempel tepi */
     position: relative;
-    min-height: 90px;
+    min-height: 90px; /* Tinggi NAV yang tetap */
 
-    /* LOGO SEBAGAI BACKGROUND PENUH NAV */
-    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=9') no-repeat;
-    background-size: contain; /* Logo utuh tanpa terpotong */
-    background-position: left 25px center; /* Posisikan logo ke kiri dengan padding di desktop */
-    overflow: hidden;
+    /* **LOGO SEBAGAI BACKGROUND PENUH NAV - TANPA TRANSPARANSI** */
+    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=9') no-repeat center center;
+    background-size: contain; /* **PERUBAHAN KRUSIAL:** Logo utuh tanpa terpotong. Mungkin ada ruang di sisi. */
+    /* Jika Anda ingin logo benar-benar mengisi penuh tanpa ruang (tapi berisiko terpotong): */
+    /* background-size: cover; */ 
+    
+    overflow: hidden; /* Pastikan tidak ada scrollbar dari background */
 }
+
+/* **NAV OVERLAY (TRANSPARANSI LOGO) DIHAPUS TOTAL** */
+/* nav::before { ... } - Baris ini harus Dihapus atau Dikomentari */
+
+
+/* Gaya untuk div.logo yang sudah dihapus dari HTML. Pastikan tidak ada gaya ini di CSS. */
+/* .logo { display: none; } - Ini tidak lagi dibutuhkan jika sudah dihapus dari HTML */
+
 
 .nav-links {
     display: flex;
     gap: 35px;
     position: relative;
-    z-index: 1;
-    flex-grow: 1;
+    z-index: 1; /* Pastikan di atas background nav */
+    flex-grow: 1; /* Agar menu mengisi ruang yang tersedia di kanan */
     justify-content: flex-end; /* Dorong menu ke kanan */
 }
 
 .nav-links li:first-child {
-    margin-right: auto; /* Dorong item pertama (Beranda) ke kiri */
-    margin-left: 170px; /* Beri ruang yang cukup untuk logo di kiri */
+    margin-right: auto; /* **PERUBAHAN:** Dorong item pertama (Beranda) ke kiri, buat ruang untuk logo */
+    /* Opsional: Sesuaikan jarak logo dari kiri */
+    margin-left: 20px; /* Contoh: jarak logo dari sisi kiri nav */
 }
 
 .nav-links a {
-    color: #fff;
+    color: #fff; /* **PERUBAHAN:** Warna teks menu menjadi putih */
     font-weight: 600;
     padding: 8px 0;
     transition: all 0.3s ease;
     position: relative;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9), -1px -1px 3px rgba(0,0,0,0.9);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9), -1px -1px 3px rgba(0,0,0,0.9); /* **PERUBAHAN:** Bayangan gelap yang sangat kuat */
 }
 
 .nav-links a:hover {
@@ -95,7 +106,7 @@ nav {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #ddd;
+    background-color: #ddd; /* Warna hover lebih terang */
     transition: width 0.3s ease-out;
 }
 
@@ -127,7 +138,7 @@ nav {
     cursor: pointer;
     background: none;
     border: none;
-    color: #fff; /* Warna hamburger menjadi putih */
+    color: #fff; /* **PERUBAHAN:** Warna hamburger menjadi putih */
     padding: 5px;
     z-index: 1001; /* Pastikan di atas semua */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tambah bayangan */
@@ -292,15 +303,24 @@ footer {
 
 @media (max-width: 768px) {
     nav {
-        justify-content: space-between; /* Untuk menempatkan logo dan hamburger di sisi berlawanan */
-        padding: 0 20px; /* Sedikit padding samping untuk nav di mobile */
+        flex-direction: row;
+        justify-content: flex-end; /* **PERUBAHAN:** Dorong semua konten nav ke kanan di mobile */
+        gap: 0;
         min-height: 60px;
-        background-position: left 20px center; /* Posisikan logo ke kiri dengan padding */
-        background-size: 120px auto; /* Sesuaikan ukuran logo agar tidak terlalu besar */
     }
 
     .nav-links {
-        display: none; /* Defaultnya sembunyikan */
+        flex-grow: unset; /* Hapus flex-grow di mobile */
+        justify-content: flex-start; /* Sejajarkan ke kiri di menu mobile */
+        margin-right: auto; /* Dorong ke kiri agar hamburger di kanan */
+    }
+
+    .nav-links li:first-child {
+        margin-left: 0; /* Hapus margin kiri di mobile */
+    }
+
+    .nav-links {
+        display: none;
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
@@ -315,18 +335,12 @@ footer {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-        z-index: 999; /* Pastikan menu ada di atas konten lain */
     }
 
     .nav-links.active {
-        display: flex; /* Saat aktif, tampilkan */
-        max-height: 300px; /* Cukup tinggi untuk semua link */
+        display: flex;
+        max-height: 300px;
         padding: 20px 25px;
-    }
-
-    .nav-links li:first-child {
-        margin-right: 0; /* Hapus margin auto di mobile */
-        margin-left: 0; /* Hapus margin kiri untuk item pertama di mobile */
     }
 
     .nav-links a {
@@ -340,27 +354,31 @@ footer {
         border-bottom: none;
     }
     .nav-links a::after {
-        display: none; /* Hapus efek hover underline di mobile */
-    }
-
-    .btn-primary { /* Atur ulang gaya tombol di mobile jika perlu */
-        background-color: #007bff;
-        color: #fff !important;
-        padding: 10px 20px;
-        border-radius: 25px;
-        font-weight: 600;
-        box-shadow: none; /* Hapus shadow di mobile */
-        width: 100%; /* Buat tombol full width di menu mobile */
-        text-align: center;
-        margin-top: 10px; /* Beri jarak dari link di atasnya */
+        display: none;
     }
 
     .hamburger {
-        display: block; /* Pastikan hamburger ditampilkan di mobile */
+        display: block;
         color: #fff; /* Warna hamburger di mobile tetap putih */
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tetap ada bayangan agar lebih jelas */
-        z-index: 1001; /* Pastikan di atas menu nav-links saat ditutup */
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tetap ada bayangan di mobile */
     }
+
+    /* --- DEBUGGING HAMBURGER MENU (HAPUS SETELAH BERHASIL) --- */
+    /* DEBUGGING OVERRIDE */
+    .hamburger {
+        position: fixed !important; /* Paksa tetap di layar */
+        top: 20px !important;
+        right: 20px !important;
+        z-index: 99999 !important; /* Sangat tinggi */
+        background-color: red !important; /* Warnai merah agar terlihat jelas */
+        border-radius: 5px !important;
+        padding: 10px !important;
+        color: white !important;
+        opacity: 1 !important; /* Paksa tidak transparan */
+        pointer-events: auto !important; /* Pastikan bisa diklik */
+        display: block !important; /* Paksa muncul */
+    }
+    /* -------------------------------------------------------- */
 
     #hero {
         height: 60vh;
