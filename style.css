@@ -51,9 +51,9 @@ nav {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    /* Menggunakan logo.jpg dari folder images */
-    background: url('images/logo.jpg') no-repeat right center;
-    background-size: 100px; /* Sesuaikan ukuran logo di background */
+    /* URL LOGO ANDA SUDAH SAYA TEMPEL DI SINI */
+    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=1') no-repeat right center;
+    background-size: 100px; /* Sesuaikan ukuran logo di background, jika perlu */
     padding: 15px 20px;
     border-radius: 12px;
     overflow: hidden;
