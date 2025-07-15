@@ -3,12 +3,43 @@ const openModalBtn = document.getElementById('open-modal-btn');
 const contactModal = document.getElementById('contact-modal');
 const modalCloseBtn = document.querySelector('.modal-close-btn');
 
+// Referensi ke elemen form dan input
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-form-btn');
+// Mengumpulkan semua field yang memiliki atribut 'required'
+const requiredFields = contactForm ? contactForm.querySelectorAll('[required]') : [];
+
+// Fungsi untuk mengecek validasi form dan mengaktifkan/menonaktifkan tombol submit
+function checkFormValidity() {
+    let allFieldsFilled = true;
+    requiredFields.forEach(field => {
+        // field.value.trim() digunakan untuk menghapus spasi di awal/akhir dan mengecek apakah kosong
+        if (!field.value.trim()) { 
+            allFieldsFilled = false;
+        }
+    });
+    if (submitBtn) {
+        submitBtn.disabled = !allFieldsFilled; // Aktifkan tombol jika semua field terisi
+    }
+}
+
+// Jalankan pengecekan validasi saat halaman dimuat (agar tombol awalnya disabled)
+document.addEventListener('DOMContentLoaded', checkFormValidity);
+
+// Tambahkan event listener untuk setiap input yang berubah atau diketik
+if (contactForm) {
+    contactForm.addEventListener('input', checkFormValidity);
+    // Jika ada kasus perubahan (misal dari autocomplete), bisa tambahkan 'change' event
+    // contactForm.addEventListener('change', checkFormValidity);
+}
+
 if (openModalBtn && contactModal && modalCloseBtn) {
     // Fungsi untuk membuka modal
     openModalBtn.addEventListener('click', (e) => {
         e.preventDefault(); // Mencegah scrolling ke # jika href="#"
         contactModal.classList.add('active');
         document.body.classList.add('no-scroll'); // Mencegah scrolling body
+        checkFormValidity(); // Panggil lagi pengecekan saat modal dibuka
     });
 
     // Fungsi untuk menutup modal
@@ -25,7 +56,7 @@ if (openModalBtn && contactModal && modalCloseBtn) {
         }
     });
 } else {
-    console.warn("Error: Elemen untuk modal tidak ditemukan. Pastikan ID 'open-modal-btn', 'contact-modal', dan class 'modal-close-btn' sudah benar di HTML.");
+    console.warn("Error: Elemen untuk modal (open-modal-btn, contact-modal, atau modal-close-btn) tidak ditemukan. Pastikan ID/Class HTML sudah benar.");
 }
 
 
