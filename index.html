@@ -31,7 +31,7 @@
     <div class="hero-content">
       <h1>Anda Tidak Sendiri!!! Kami siap mendampingi.</h1>
       <p>Mendampingi penyintas kekerasan seksual dengan bantuan hukum dan dukungan yang berpihak pada keadilan.</p>
-      <a href="#tentang" class="btn-primary">Ajukan Bantuan</a>
+      <a href="#ajukan" class="btn-primary" id="openFormBtn">Ajukan Bantuan</a>
     </div>
   </section>
 
@@ -48,10 +48,67 @@
     </div>
   </section>
 
+  <!-- FORMULIR BANTUAN -->
+  <div class="modal" id="bantuanModal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">×</span>
+      <h2>Formulir Bantuan Hukum</h2>
+      <form id="bantuanForm">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama" required />
+
+        <label>Domisili</label>
+        <input type="text" id="domisili" required />
+
+        <label>Nomor Telepon</label>
+        <input type="tel" id="telepon" required />
+
+        <label>Subjek Bantuan</label>
+        <input type="text" id="subjek" required />
+
+        <label>Masalah Anda</label>
+        <textarea id="masalah" rows="4" required></textarea>
+
+        <button type="submit" id="submitBtn" disabled>Ajukan Sekarang</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
   <script>
     function toggleMenu() {
       document.getElementById("navLinks").classList.toggle("active");
     }
+
+    const modal = document.getElementById("bantuanModal");
+    const openFormBtn = document.getElementById("openFormBtn");
+    const form = document.getElementById("bantuanForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    openFormBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      modal.style.display = "flex";
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    form.addEventListener("input", function () {
+      const isValid = [...form.elements].every(
+        (el) => el.value.trim() !== "" && el.tagName !== "BUTTON"
+      );
+      submitBtn.disabled = !isValid;
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Permintaan bantuan berhasil dikirim!");
+      closeModal();
+      form.reset();
+      submitBtn.disabled = true;
+    });
   </script>
+
 </body>
 </html>
