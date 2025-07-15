@@ -61,7 +61,7 @@ nav {
 /* Hero Section */
 #hero {
   background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2039.jpeg') center/cover no-repeat;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
