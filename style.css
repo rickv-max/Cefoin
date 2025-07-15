@@ -148,7 +148,7 @@ div.logo {
 
 /* Hero Section - Dengan Parallax Effect */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/hero-background.jpg') no-repeat center center; /* **URL GAMBAR HERO BARU ANDA DI SINI** */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2038.jpeg') no-repeat center center; /* **URL GAMBAR HERO SUDAH DIPERBAIKI KE IMG_2038.jpeg** */
     background-attachment: fixed;
     background-size: cover;
     color: #fff;
