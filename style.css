@@ -148,7 +148,7 @@ div.logo {
 
 /* Hero Section - Dengan Parallax Effect */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2039.jpeg') no-repeat center center; /* **URL GAMBAR HERO ANDA DI SINI** */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/hero-background.jpg') no-repeat center center; /* **URL GAMBAR HERO BARU ANDA DI SINI** */
     background-attachment: fixed;
     background-size: cover;
     color: #fff;
@@ -525,8 +525,6 @@ footer {
         padding: 10px 0;
     }
     
-    /* Tombol Hamburger - SUDAH DIHAPUS DARI HTML */
-
 
     .contact-grid {
         grid-template-columns: 1fr;
