@@ -7,10 +7,10 @@ document.getElementById('hamburger').addEventListener('click', function () {
 // Form Modal
 document.addEventListener('DOMContentLoaded', () => {
   const openModalBtn = document.getElementById('open-modal-btn');
-  const contactModal = document.getElementById('contact-modal');
-  const modalCloseBtn = document.querySelector('.modal-close-btn');
-  const contactForm = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-form-btn');
+    const contactModal = document.getElementById('ajukan-modal');
+  const modalCloseBtn = document.querySelector('.ajukan-close-btn');
+  const contactForm = document.getElementById('ajukan-form');
+  const submitBtn = document.getElementById('ajukan-submit-btn');
   const requiredFields = contactForm.querySelectorAll('[required]');
 
   function checkFormValidity() {
