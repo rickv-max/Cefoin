@@ -19,86 +19,73 @@
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#beranda">Beranda</a></li>
-        <li><a href="#tentang">Tentang</a></li>
-        <li><a href="#kontak" class="btn-primary">Kontak</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#tim">Tim Kami</a></li>
       </ul>
       <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO / BERANDA -->
   <section id="hero">
     <div class="hero-content">
       <h1>Anda Tidak Sendiri!!! Kami siap mendampingi.</h1>
       <p>Mendampingi penyintas kekerasan seksual dengan bantuan hukum dan dukungan yang berpihak pada keadilan.</p>
-      <a href="#ajukan" class="btn-primary" id="openFormBtn">Ajukan Bantuan</a>
+      <a href="#layanan" class="btn-primary">Ajukan Bantuan</a>
     </div>
   </section>
 
-  <!-- TENTANG KAMI -->
+  <!-- TENTANG KAMI (tetap ada tapi tidak masuk menu) -->
   <section class="section-content" id="tentang">
     <div class="content-box">
       <h2>Tentang Kami</h2>
-      <p>
-        CEFOIN adalah komunitas yang berdedikasi untuk memberikan pendampingan hukum dan dukungan komprehensif bagi penyintas kekerasan seksual. Misi kami adalah menciptakan ruang aman, memberikan akses keadilan, dan mengadvokasi hak-hak penyintas. Kami percaya bahwa setiap individu berhak mendapatkan keadilan dan dukungan penuh dalam menghadapi trauma dan proses hukum yang kompleks.
-      </p>
-      <p>
-        Dengan tim profesional dan relawan yang berempati, kami berkomitmen untuk menjadi garda terdepan dalam memperjuangkan hak-hak anak dan perempuan, membangun kesadaran, serta mengedukasi masyarakat tentang pentingnya pencegahan kekerasan seksual dan penanganan yang tepat bagi korban.
-      </p>
+      <p>CEFOIN adalah komunitas yang berdedikasi untuk memberikan pendampingan hukum dan dukungan komprehensif bagi penyintas kekerasan seksual. Misi kami adalah menciptakan ruang aman, memberikan akses keadilan, dan mengadvokasi hak-hak penyintas.</p>
+      <p>Dengan tim profesional dan relawan yang berempati, kami berkomitmen untuk menjadi garda terdepan dalam memperjuangkan hak-hak anak dan perempuan, membangun kesadaran, serta mengedukasi masyarakat tentang pentingnya pencegahan kekerasan seksual dan penanganan yang tepat bagi korban.</p>
     </div>
   </section>
 
-  <!-- FORMULIR BANTUAN -->
-  <div class="modal" id="bantuanModal">
-    <div class="modal-content">
-      <span class="close-button" onclick="closeModal()">×</span>
-      <h2>Formulir Bantuan Hukum</h2>
-      <p class="form-info">
-        Silakan isi formulir berikut untuk mengajukan bantuan hukum dari CEFOIN.  
-        Semua kolom wajib diisi. Data Anda akan kami jaga kerahasiaannya.
-      </p>
-      <form action="https://formsubmit.co/rickymaulana080503@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_autoresponse" value="Terima kasih telah menghubungi CEFOIN. Kami akan segera menindaklanjuti bantuan Anda.">
-
-        <label>Nama Lengkap</label>
-        <input type="text" name="Nama Lengkap" required placeholder="Contoh: Rina Andini" />
-
-        <label>Domisili</label>
-        <input type="text" name="Domisili" required placeholder="Misal: Surabaya, Jawa Timur" />
-
-        <label>Nomor Telepon</label>
-        <input type="tel" name="Telepon" required placeholder="Nomor aktif yang bisa dihubungi" />
-
-        <label>Subjek Bantuan</label>
-        <input type="text" name="Subjek" required placeholder="Misal: Pendampingan hukum" />
-
-        <label>Masalah Anda</label>
-        <textarea name="Masalah" rows="4" required placeholder="Jelaskan masalah yang sedang Anda alami..."></textarea>
-
-        <button type="submit">Ajukan Sekarang</button>
-      </form>
+  <!-- LAYANAN -->
+  <section class="section-content" id="layanan">
+    <div class="content-box">
+      <h2>Layanan Kami</h2>
+      <p>CEFOIN menyediakan layanan pendampingan hukum, konseling psikologis, advokasi, dan mediasi komunitas untuk penyintas kekerasan seksual.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- SCRIPT -->
+  <!-- PROGRAM -->
+  <section class="section-content" id="program">
+    <div class="content-box">
+      <h2>Program</h2>
+      <p>Kami aktif menjalankan berbagai program seperti penyuluhan hukum, kampanye kesadaran publik, pelatihan relawan, dan edukasi gender di sekolah dan komunitas.</p>
+    </div>
+  </section>
+
+  <!-- TIM KAMI -->
+  <section class="section-content" id="tim">
+    <div class="content-box">
+      <h2>Tim Kami</h2>
+      <p>Tim kami terdiri dari advokat profesional, psikolog berpengalaman, dan relawan yang berdedikasi dalam memperjuangkan keadilan bagi penyintas.</p>
+    </div>
+  </section>
+
+  <!-- FORMULIR AJUKAN BANTUAN (jika ingin diaktifkan kembali) -->
+  <!-- Modal Form (opsional, bisa aktif jika tombol diklik) -->
+
   <script>
     function toggleMenu() {
-      document.getElementById("navLinks").classList.toggle("active");
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
     }
 
-    const modal = document.getElementById("bantuanModal");
-    const openFormBtn = document.getElementById("openFormBtn");
-
-    openFormBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      modal.style.display = "flex";
+    document.addEventListener("DOMContentLoaded", function () {
+      const navItems = document.querySelectorAll(".nav-links li a");
+      navItems.forEach(item => {
+        item.addEventListener("click", () => {
+          document.getElementById("navLinks").classList.remove("active");
+        });
+      });
     });
-
-    function closeModal() {
-      modal.style.display = "none";
-    }
   </script>
 
 </body>
