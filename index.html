@@ -6,6 +6,11 @@
   <title>CEFOIN</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    .hidden-section {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -14,7 +19,7 @@
     <nav>
       <div class="logo">
         <a href="#beranda">
-          <img src="images/IMG_2047.png" alt="Logo CEFOIN" />
+          <img src="https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2047.png" alt="Logo CEFOIN" />
         </a>
       </div>
       <ul class="nav-links" id="navLinks">
@@ -27,12 +32,12 @@
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO / BERANDA -->
   <section id="hero">
     <div class="hero-content">
       <h1>Anda Tidak Sendiri!!! Kami siap mendampingi.</h1>
       <p>Mendampingi penyintas kekerasan seksual dengan bantuan hukum dan dukungan yang berpihak pada keadilan.</p>
-      <a href="#" class="btn-primary" onclick="openForm()">Ajukan Bantuan</a>
+      <a href="#layanan" class="btn-primary">Ajukan Bantuan</a>
     </div>
   </section>
 
@@ -45,48 +50,64 @@
     </div>
   </section>
 
-  <!-- LAYANAN -->
+  <!-- LAYANAN (disembunyikan default) -->
   <section class="section-content hidden-section" id="layanan">
     <div class="content-box">
       <h2>Layanan Kami</h2>
-      <p>Kami menyediakan bantuan hukum, psikologis, dan advokasi bagi penyintas kekerasan seksual.</p>
+      <p>CEFOIN menyediakan layanan pendampingan hukum, konseling psikologis, advokasi, dan mediasi komunitas untuk penyintas kekerasan seksual.</p>
     </div>
   </section>
 
-  <!-- PROGRAM -->
+  <!-- PROGRAM (disembunyikan default) -->
   <section class="section-content hidden-section" id="program">
     <div class="content-box">
       <h2>Program</h2>
-      <p>Program kami mencakup penyuluhan hukum, pelatihan relawan, dan kampanye kesadaran publik.</p>
+      <p>Kami aktif menjalankan berbagai program seperti penyuluhan hukum, kampanye kesadaran publik, pelatihan relawan, dan edukasi gender di sekolah dan komunitas.</p>
     </div>
   </section>
 
-  <!-- TIM -->
+  <!-- TIM KAMI (disembunyikan default) -->
   <section class="section-content hidden-section" id="tim">
     <div class="content-box">
       <h2>Tim Kami</h2>
-      <p>Tim terdiri dari advokat, psikolog, dan relawan yang berdedikasi membantu penyintas.</p>
+      <p>Tim kami terdiri dari advokat profesional, psikolog berpengalaman, dan relawan yang berdedikasi dalam memperjuangkan keadilan bagi penyintas.</p>
     </div>
   </section>
 
-  <!-- FORMULIR POPUP -->
-  <div id="formModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeForm()">&times;</span>
-      <h2>Formulir Pengajuan Bantuan</h2>
-      <form action="https://formsubmit.co/rickymaulana080503@gmail.com" method="POST" onsubmit="return validateForm()">
-        <input type="text" name="nama" id="nama" placeholder="Nama Lengkap" required />
-        <input type="text" name="domisili" id="domisili" placeholder="Domisili" required />
-        <input type="tel" name="telepon" id="telepon" placeholder="Nomor Telepon" required />
-        <input type="text" name="subjek" id="subjek" placeholder="Subjek Bantuan" required />
-        <textarea name="masalah" id="masalah" placeholder="Ceritakan masalah Anda" required></textarea>
-        <input type="hidden" name="_next" value="https://cefoin.id/success.html">
-        <button type="submit" class="btn-primary">Kirim</button>
-      </form>
-    </div>
-  </div>
+  <!-- SCRIPT -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
 
-  <!-- JS -->
-  <script src="script.js"></script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navItems = document.querySelectorAll(".nav-links li a");
+      const sections = ["layanan", "program", "tim"];
+
+      navItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+          const target = item.getAttribute("href").substring(1);
+
+          // Sembunyikan semua yang ada di daftar
+          sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) section.style.display = "none";
+          });
+
+          // Tampilkan hanya bagian yang diklik
+          const selected = document.getElementById(target);
+          if (selected) {
+            selected.style.display = "block";
+            selected.scrollIntoView({ behavior: "smooth" });
+          }
+
+          // Tutup menu mobile
+          document.getElementById("navLinks").classList.remove("active");
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
