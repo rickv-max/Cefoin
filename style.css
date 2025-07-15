@@ -148,10 +148,11 @@ div.logo {
 
 /* Hero Section - Dengan Parallax Effect */
 #hero {
-    /* **PERUBAHAN:** Menyesuaikan linear-gradient dan menghapus background-attachment: fixed */
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2038.jpeg') no-repeat center center; /* URL gambar hero Anda */
-    /* background-attachment: fixed; **DIHAPUS** */
-    background-size: cover; /* Background akan mengisi penuh area hero */
+    /* **PERUBAHAN ULTIMATE:** Hapus linear-gradient dan tambahkan !important */
+    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2038.jpeg') no-repeat center center / cover !important; /* **URL GAMBAR HERO ANDA + !important** */
+    
+    background-attachment: scroll; /* Pastikan tidak fixed, untuk kompatibilitas */
+    /* background-size: cover; Sudah termasuk di shorthand background di atas */
     color: #fff;
     text-align: center;
     padding: 120px 20px;
@@ -169,7 +170,8 @@ div.logo {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent);
+    /* Pertahankan gradient ringan ini jika diinginkan, atau set ke transparent */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent); 
     z-index: 1;
 }
 
