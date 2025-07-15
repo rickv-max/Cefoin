@@ -1,54 +1,108 @@
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
+document.getElementById('hamburger').addEventListener('click', function () {
+    const nav = document.getElementById('nav-links');
+    nav.classList.toggle('active');
+});
+
+// JavaScript untuk Pop-up Modal (Formulir Kontak)
+const openModalBtn = document.getElementById('open-modal-btn');
+const contactModal = document.getElementById('contact-modal');
+const modalCloseBtn = document.querySelector('.modal-close-btn');
+
+// Referensi ke elemen form dan input
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-form-btn');
+// Mengumpulkan semua field yang memiliki atribut 'required'
+const requiredFields = contactForm ? contactForm.querySelectorAll('[required]') : [];
+
+// Fungsi untuk mengecek validasi form dan mengaktifkan/menonaktifkan tombol submit
+function checkFormValidity() {
+    let allFieldsFilled = true;
+    requiredFields.forEach(field => {
+        // field.value.trim() digunakan untuk menghapus spasi di awal/akhir dan mengecek apakah kosong
+        if (!field.value.trim()) { 
+            allFieldsFilled = false;
+        }
+    });
+    if (submitBtn) {
+        submitBtn.disabled = !allFieldsFilled; // Aktifkan tombol jika semua field terisi
+    }
 }
 
-function openForm() {
-  document.getElementById("formModal").style.display = "block";
+// Jalankan pengecekan validasi saat halaman dimuat (agar tombol awalnya disabled)
+document.addEventListener('DOMContentLoaded', checkFormValidity);
+
+// Tambahkan event listener untuk setiap input yang berubah atau diketik
+if (contactForm) {
+    contactForm.addEventListener('input', checkFormValidity);
 }
 
-function closeForm() {
-  document.getElementById("formModal").style.display = "none";
+if (openModalBtn && contactModal && modalCloseBtn) {
+    // Fungsi untuk membuka modal
+    openModalBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Mencegah scrolling ke # jika href="#"
+        contactModal.classList.add('active');
+        document.body.classList.add('no-scroll'); // Mencegah scrolling body
+        checkFormValidity(); // Panggil lagi pengecekan saat modal dibuka
+    });
+
+    // Fungsi untuk menutup modal
+    modalCloseBtn.addEventListener('click', () => {
+        contactModal.classList.remove('active');
+        document.body.classList.remove('no-scroll'); // Mengizinkan scrolling body
+    });
+
+    // Menutup modal saat mengklik di luar area konten modal
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) { // Jika target klik adalah overlay itu sendiri
+            contactModal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+} else {
+    console.warn("Error: Elemen untuk modal (open-modal-btn, contact-modal, atau modal-close-btn) tidak ditemukan. Pastikan ID/Class HTML sudah benar.");
 }
 
-window.onclick = function(event) {
-  const modal = document.getElementById("formModal");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+
+// JavaScript untuk Animasi Reveal on Scroll
+const revealableElements = document.querySelectorAll('.revealable');
+
+const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target); 
+        } else {
+            // entry.target.classList.remove('revealed'); // Opsional: reset saat keluar viewport
+        }
+    });
 };
 
-function validateForm() {
-  const nama = document.getElementById("nama").value.trim();
-  const domisili = document.getElementById("domisili").value.trim();
-  const telepon = document.getElementById("telepon").value.trim();
-  const subjek = document.getElementById("subjek").value.trim();
-  const masalah = document.getElementById("masalah").value.trim();
-
-  if (!nama || !domisili || !telepon || !subjek || !masalah) {
-    alert("Semua kolom wajib diisi!");
-    return false;
-  }
-
-  alert("Formulir berhasil dikirim. Terima kasih atas kepercayaan Anda!");
-  return true;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const navItems = document.querySelectorAll(".nav-links li a");
-  const sections = ["layanan", "program", "tim"];
-
-  navItems.forEach(item => {
-    item.addEventListener("click", function(e) {
-      const target = item.getAttribute("href").substring(1);
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = "none";
-      });
-      const targetEl = document.getElementById(target);
-      if (targetEl) {
-        targetEl.style.display = "block";
-        targetEl.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
+const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.2
 });
+
+revealableElements.forEach(element => {
+    observer.observe(element);
+});
+
+// Tambahan untuk item layanan agar muncul satu per satu (staggered)
+const layananGrid = document.querySelector('.layanan-grid');
+if (layananGrid) {
+    const layananObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let delay = 0;
+                Array.from(entry.target.children).forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('revealed');
+                    }, delay);
+                    delay += 150;
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    layananObserver.observe(layananGrid);
+}
