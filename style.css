@@ -148,7 +148,7 @@ div.logo {
 
 /* Hero Section - Dengan Parallax Effect */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517486804562-b91c0ad557c6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; /* URL gambar hero yang sudah diperbaiki */
     background-attachment: fixed;
     background-size: cover;
     color: #fff;
@@ -353,7 +353,11 @@ footer {
     font-family: 'Open Sans', sans-serif;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
+/* Styling untuk input yang invalid */
+.form-group input:required:invalid,
+.form-group textarea:required:invalid {
+    border-color: #dc3545; /* Warna merah untuk field yang wajib tapi belum diisi */
+}
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #007bff;
@@ -377,7 +381,7 @@ footer {
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
 
@@ -385,6 +389,14 @@ footer {
     background-color: #0056b3;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+/* Styling untuk tombol submit yang disabled */
+.btn-submit:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 .disclaimer {
@@ -461,12 +473,12 @@ footer {
 
 /* Responsive adjustment for contact section & general mobile */
 @media (max-width: 768px) {
-    /* **PERUBAHAN:** nav layout untuk mobile */
+    /* nav layout untuk mobile */
     nav {
         flex-direction: row;
         justify-content: flex-start; /* Dorong konten ke kiri di mobile */
         gap: 0;
-        min-height: 60px; /* Tinggi nav di mobile */
+        min-height: 60px;
     }
 
     div.logo {
@@ -475,7 +487,7 @@ footer {
         height: 100%;
     }
 
-    /* **PERUBAHAN KRUSIAL:** Sembunyikan menu di mobile */
+    /* PERUBAHAN KRUSIAL: Sembunyikan menu di mobile */
     .nav-links {
         display: none; /* Sembunyikan di mobile secara default */
         
@@ -495,7 +507,6 @@ footer {
         transition: max-height 0.4s ease-out, padding 0.4s ease-out;
         z-index: 10; /* Pastikan menu di atas konten */
     }
-    /* .nav-links.active { display: flex; max-height: 300px; padding: 20px 25px; } - Ini untuk hamburger, tidak dipakai sekarang */
 
     .nav-links li:first-child {
         margin-left: 0; /* Hapus margin kiri */
@@ -515,7 +526,7 @@ footer {
     }
     
     /* Tombol Hamburger - SUDAH DIHAPUS DARI HTML */
-    /* .hamburger { display: none; } */
+
 
     .contact-grid {
         grid-template-columns: 1fr;
