@@ -1,34 +1,32 @@
 // JavaScript untuk Hamburger Menu
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger-menu');
-    const navLinks = document.getElementById('nav-links');
+const hamburger = document.getElementById('hamburger-menu');
+const navLinks = document.getElementById('nav-links');
 
-    // Fungsi untuk toggle menu
-    function toggleMenu() {
-        navLinks.classList.toggle('active');
-        // Opsional: untuk mencegah scrolling body saat menu mobile terbuka
-        // document.body.classList.toggle('no-scroll');
-    }
+// Fungsi untuk toggle menu
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+    // Opsional: untuk mencegah scrolling body saat menu mobile terbuka
+    // document.body.classList.toggle('no-scroll'); 
+}
 
-    // Tambahkan event listener ke tombol hamburger
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', toggleMenu);
+// Tambahkan event listener ke tombol hamburger
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', toggleMenu);
 
-        // Menutup menu saat salah satu link diklik (untuk pengalaman mobile yang lebih baik)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                // Tutup menu hanya jika di layar kecil (lebar kurang dari atau sama dengan 768px)
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                    // document.body.classList.remove('no-scroll');
-                }
-            });
+    // Menutup menu saat salah satu link diklik (untuk pengalaman mobile yang lebih baik)
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            // Tutup menu hanya jika di layar kecil (lebar kurang dari atau sama dengan 768px)
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                // document.body.classList.remove('no-scroll'); 
+            }
         });
-    } else {
-        // Pesan ini akan muncul di console browser jika ada masalah dengan ID
-        console.warn("Error: Elemen dengan ID 'hamburger-menu' atau 'nav-links' tidak ditemukan. Pastikan ID di HTML sudah benar.");
-    }
-});
+    });
+} else {
+    // Pesan ini akan muncul di console browser jika ada masalah dengan ID
+    console.warn("Error: Elemen dengan ID 'hamburger-menu' atau 'nav-links' tidak ditemukan. Pastikan ID di HTML sudah benar.");
+}
 
 
 // JavaScript untuk Animasi Reveal on Scroll
@@ -41,7 +39,7 @@ const handleIntersection = (entries, observer) => {
             // Jika elemen masuk viewport
             entry.target.classList.add('revealed');
             // Hentikan observasi setelah di-reveal (opsional, jika hanya ingin sekali animasi)
-            observer.unobserve(entry.target);
+            observer.unobserve(entry.target); 
         } else {
             // Opsional: Jika elemen keluar viewport, reset untuk bisa di-reveal lagi
             // entry.target.classList.remove('revealed');
