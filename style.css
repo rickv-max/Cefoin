@@ -57,19 +57,29 @@ nav {
     /* LOGO SEBAGAI BACKGROUND PENUH NAV - TANPA TRANSPARANSI */
     background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=9') no-repeat center center;
     background-size: contain; /* Logo utuh tanpa terpotong. Mungkin ada ruang di sisi. */
-    /* Jika Anda ingin logo benar-benar mengisi penuh tanpa ruang (tapi berisiko terpotong): */
-    /* background-size: cover; */ 
     
     overflow: hidden; /* Pastikan tidak ada scrollbar dari background */
     pointer-events: auto; /* Pastikan NAV bisa menerima klik */
 }
 
 /* NAV OVERLAY (TRANSPARANSI LOGO) DIHAPUS TOTAL */
-/* nav::before { ... } - Baris ini harus Dihapus atau Dikomentari */
 
 
-/* Gaya untuk div.logo yang sudah dihapus dari HTML. */
-/* Karena elemen ini tidak lagi ada, gaya ini sebenarnya tidak akan diterapkan. */
+/* Gaya untuk div.logo (yang sekarang hanya placeholder kosong di HTML) */
+div.logo {
+    flex-basis: 250px; /* Berikan lebar tetap untuk area logo di nav */
+    flex-shrink: 0; /* Jangan biarkan mengecil */
+    height: 100%; /* Mengisi tinggi nav */
+    display: flex;
+    justify-content: flex-start; /* Logo akan di kiri */
+    align-items: center;
+    position: relative;
+    z-index: 1; /* Pastikan di atas background nav */
+    background: none; 
+    min-width: unset;
+    box-shadow: none;
+    padding: 0;
+}
 
 
 .nav-links {
@@ -129,23 +139,6 @@ nav {
 
 .btn-primary:hover {
     background-color: #0056b3;
-}
-
-/* Hamburger Menu */
-.hamburger {
-    display: none; /* Default: tidak terlihat di desktop */
-    font-size: 2.2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #fff; /* Warna hamburger untuk background logo */
-    padding: 5px;
-    z-index: 1001; /* Pastikan di atas semua */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tambah bayangan */
-    transition: transform 0.3s ease;
-}
-.hamburger:hover {
-    transform: scale(1.1);
 }
 
 
@@ -310,70 +303,50 @@ footer {
         min-height: 60px;
     }
 
-    /* Gaya untuk div.logo yang sudah dihapus dari HTML. */
-    /* Karena elemen ini tidak lagi ada, gaya ini tidak akan diterapkan. */
-    /* .logo { display: none; } */
-
-
-    .nav-links {
-        flex-grow: unset; /* Hapus flex-grow di mobile */
-        justify-content: flex-start; /* Sejajarkan ke kiri di menu mobile */
-        margin-right: auto; /* Dorong ke kiri agar hamburger di kanan */
-    }
-
-    .nav-links li:first-child {
-        margin-left: 0; /* Hapus margin kiri di mobile */
+    /* div.logo (placeholder kosong) akan tetap ada di sini */
+    div.logo {
+        flex-basis: auto; /* Hapus flex-basis tetap di mobile */
+        flex-grow: 1; /* Biarkan mengisi ruang agar menu didorong ke kanan */
     }
 
     .nav-links {
-        display: none;
+        display: flex; /* Menu ditampilkan di mobile secara default tanpa hamburger */
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        padding: 20px 25px;
-        border-top: 1px solid #f0f0f0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        position: static; /* Ubah dari absolute untuk normal flow */
+        top: auto;
+        left: auto;
+        width: auto; /* Width auto */
+        background: none; /* Hapus background putih menu mobile */
+        box-shadow: none; /* Hapus shadow menu mobile */
+        padding: 0; /* Hapus padding menu mobile */
+        border-top: none; /* Hapus border menu mobile */
+        max-height: unset; /* Hapus max-height untuk menu mobile */
+        overflow: visible; /* Hapus overflow */
+        transition: none; /* Hapus transisi menu mobile */
     }
+    /* Hapus .nav-links.active karena tidak lagi pakai toggle */
+    /* .nav-links.active { display: flex; ... } */
 
-    .nav-links.active {
-        display: flex;
-        max-height: 300px;
-        padding: 20px 25px;
+    .nav-links li:first-child {
+        margin-left: 0; /* Hapus margin kiri */
+        margin-right: auto; /* Biarkan ini untuk dorong logo ke kiri */
     }
-
+    .nav-links li {
+        width: auto; /* Hapus width 100% untuk li di mobile */
+        border-bottom: none; /* Hapus border bawah li */
+    }
     .nav-links a {
-        color: #333; /* Warna teks menu di mobile */
-        text-shadow: none; /* Hapus text-shadow di mobile */
-        padding: 10px 0;
-        width: 100%;
-        border-bottom: 1px solid #f0f0f0;
+        color: #fff; /* **PERUBAHAN:** Warna teks menu mobile menjadi putih */
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tambah text-shadow untuk menu mobile */
     }
-    .nav-links li:last-child a {
-        border-bottom: none;
-    }
-    .nav-links a::after {
-        display: none;
+    
+    /* Tombol Hamburger - HAPUS TOTAL DARI CSS MOBILE INI */
+    .hamburger {
+        display: none; /* Pastikan dihapus dari mobile juga */
     }
 
-    .hamburger {
-        display: block; /* Hamburger terlihat di mobile */
-        color: #333; /* Warna hamburger di mobile agar kontras dengan menu putih */
-        text-shadow: none; /* Hapus text-shadow di mobile */
-        /* Hapus semua properti debugging !important */
-        background-color: transparent;
-        border-radius: 0;
-        padding: 5px;
-        opacity: 1;
-        pointer-events: auto;
-    }
 
     #hero {
         height: 60vh;
@@ -436,5 +409,129 @@ footer {
     }
     .layanan-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* Styling untuk Bagian Kontak Kami - Ditempatkan di bagian bawah CSS */
+.text-center {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+    align-items: flex-start;
+}
+
+.contact-info, .contact-form {
+    background-color: #f9f9f9;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    height: 100%;
+}
+
+.contact-info h3, .contact-form h3 {
+    color: #007bff;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.contact-info i {
+    font-size: 1.2rem;
+    color: #28a745;
+    margin-top: 3px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 30px;
+}
+
+/* Responsive adjustment for contact section */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-info, .contact-form {
+        padding: 25px;
+    }
+    .text-center {
+        font-size: 1rem;
     }
 }
