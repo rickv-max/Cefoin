@@ -69,3 +69,20 @@ if (layananGrid) { // Pastikan elemen grid ada
     });
     layananObserver.observe(layananGrid);
 }
+/* --- DEBUGGING HAMBURGER MENU (HAPUS SETELAH BERHASIL) --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block !important; /* Paksa muncul */
+        position: fixed !important; /* Paksa tetap di layar */
+        top: 20px !important; /* Posisi dari atas */
+        right: 20px !important; /* Posisi dari kanan */
+        z-index: 99999 !important; /* Paksa di atas semua */
+        background-color: red !important; /* Warnai merah agar sangat jelas */
+        border-radius: 5px !important;
+        padding: 10px !important;
+        color: white !important;
+        opacity: 1 !important; /* Paksa tidak transparan */
+        pointer-events: auto !important; /* Pastikan bisa diklik */
+    }
+}
+/* -------------------------------------------------------- */
