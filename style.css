@@ -57,10 +57,10 @@ nav {
     /* **LOGO SEBAGAI BACKGROUND PENUH NAV - TANPA TRANSPARANSI** */
     background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=9') no-repeat center center;
     background-size: contain; /* **PERUBAHAN KRUSIAL:** Logo utuh tanpa terpotong. Mungkin ada ruang di sisi. */
-    /* Jika Anda ingin logo benar-benar mengisi penuh tanpa ruang (tapi berisiko terpotong): */
     /* background-size: cover; */ 
     
     overflow: hidden; /* Pastikan tidak ada scrollbar dari background */
+    pointer-events: auto !important; /* **PERUBAHAN:** Pastikan NAV bisa menerima klik */
 }
 
 /* **NAV OVERLAY (TRANSPARANSI LOGO) DIHAPUS TOTAL** */
@@ -68,7 +68,6 @@ nav {
 
 
 /* Gaya untuk div.logo yang sudah dihapus dari HTML. Pastikan tidak ada gaya ini di CSS. */
-/* .logo { display: none; } - Ini tidak lagi dibutuhkan jika sudah dihapus dari HTML */
 
 
 .nav-links {
@@ -81,18 +80,17 @@ nav {
 }
 
 .nav-links li:first-child {
-    margin-right: auto; /* **PERUBAHAN:** Dorong item pertama (Beranda) ke kiri, buat ruang untuk logo */
-    /* Opsional: Sesuaikan jarak logo dari kiri */
+    margin-right: auto; /* Dorong item pertama (Beranda) ke kiri, buat ruang untuk logo */
     margin-left: 20px; /* Contoh: jarak logo dari sisi kiri nav */
 }
 
 .nav-links a {
-    color: #fff; /* **PERUBAHAN:** Warna teks menu menjadi putih */
+    color: #fff; /* Warna teks menu menjadi putih */
     font-weight: 600;
     padding: 8px 0;
     transition: all 0.3s ease;
     position: relative;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9), -1px -1px 3px rgba(0,0,0,0.9); /* **PERUBAHAN:** Bayangan gelap yang sangat kuat */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9), -1px -1px 3px rgba(0,0,0,0.9); /* Bayangan gelap yang sangat kuat */
 }
 
 .nav-links a:hover {
@@ -138,7 +136,7 @@ nav {
     cursor: pointer;
     background: none;
     border: none;
-    color: #fff; /* **PERUBAHAN:** Warna hamburger menjadi putih */
+    color: #fff; /* Warna hamburger menjadi putih */
     padding: 5px;
     z-index: 1001; /* Pastikan di atas semua */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tambah bayangan */
@@ -147,6 +145,25 @@ nav {
     transform: scale(1.1);
 }
 
+/* --- DEBUGGING HAMBURGER MENU (HAPUS SETELAH BERHASIL) --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block !important; /* Paksa muncul */
+        /* **PERUBAHAN:** Hapus position: fixed, top, right */
+        /* position: fixed !important; */ 
+        /* top: 20px !important; */
+        /* right: 20px !important; */
+        
+        z-index: 99999 !important; /* Sangat tinggi */
+        background-color: red !important; /* Warnai merah agar terlihat jelas */
+        border-radius: 5px !important;
+        padding: 10px !important;
+        color: white !important;
+        opacity: 1 !important;
+        pointer-events: auto !important; /* Pastikan bisa diklik */
+    }
+}
+/* -------------------------------------------------------- */
 
 /* Hero Section - Dengan Parallax Effect */
 #hero {
@@ -304,7 +321,7 @@ footer {
 @media (max-width: 768px) {
     nav {
         flex-direction: row;
-        justify-content: flex-end; /* **PERUBAHAN:** Dorong semua konten nav ke kanan di mobile */
+        justify-content: flex-end; /* Dorong semua konten nav ke kanan di mobile */
         gap: 0;
         min-height: 60px;
     }
@@ -362,23 +379,6 @@ footer {
         color: #fff; /* Warna hamburger di mobile tetap putih */
         text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tetap ada bayangan di mobile */
     }
-
-    /* --- DEBUGGING HAMBURGER MENU (HAPUS SETELAH BERHASIL) --- */
-    /* DEBUGGING OVERRIDE */
-    .hamburger {
-        position: fixed !important; /* Paksa tetap di layar */
-        top: 20px !important;
-        right: 20px !important;
-        z-index: 99999 !important; /* Sangat tinggi */
-        background-color: red !important; /* Warnai merah agar terlihat jelas */
-        border-radius: 5px !important;
-        padding: 10px !important;
-        color: white !important;
-        opacity: 1 !important; /* Paksa tidak transparan */
-        pointer-events: auto !important; /* Pastikan bisa diklik */
-        display: block !important; /* Paksa muncul */
-    }
-    /* -------------------------------------------------------- */
 
     #hero {
         height: 60vh;
