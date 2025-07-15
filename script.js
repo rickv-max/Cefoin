@@ -1,3 +1,8 @@
+document.getElementById('hamburger').addEventListener('click', function () {
+    const nav = document.getElementById('nav-links');
+    nav.classList.toggle('active');
+});
+
 // JavaScript untuk Pop-up Modal (Formulir Kontak)
 const openModalBtn = document.getElementById('open-modal-btn');
 const contactModal = document.getElementById('contact-modal');
