@@ -172,6 +172,8 @@ nav {
   border-radius: 10px;
   width: 90%;
   max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
 }
 .modal-content h2 {
