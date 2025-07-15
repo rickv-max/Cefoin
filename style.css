@@ -70,6 +70,16 @@ nav {
   cursor: pointer;
 }
 
+/* LOGO */
+.logo img {
+  height: 40px;
+  max-width: 100%;
+  object-fit: contain;
+}
+.logo {
+  margin-left: auto;
+}
+
 /* HERO SECTION */
 #hero {
   position: relative;
@@ -91,7 +101,7 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4); /* Overlay gelap */
   z-index: 1;
 }
 .hero-content {
