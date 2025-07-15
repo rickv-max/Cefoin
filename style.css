@@ -83,7 +83,7 @@ div.logo {
 
 
 .nav-links {
-    display: flex;
+    display: flex; /* **PERHATIAN:** Ini adalah display untuk desktop */
     gap: 35px;
     position: relative;
     z-index: 1; /* Pastikan di atas background nav */
@@ -298,53 +298,61 @@ footer {
 @media (max-width: 768px) {
     nav {
         flex-direction: row;
-        justify-content: flex-end; /* Dorong semua konten nav ke kanan di mobile */
+        justify-content: flex-start; /* **PERUBAHAN:** Dorong konten ke kiri di mobile */
         gap: 0;
         min-height: 60px;
     }
 
     /* div.logo (placeholder kosong) akan tetap ada di sini */
     div.logo {
-        flex-basis: auto; /* Hapus flex-basis tetap di mobile */
-        flex-grow: 1; /* Biarkan mengisi ruang agar menu didorong ke kanan */
+        flex-basis: 20%; /* Berikan sedikit ruang untuk logo di mobile */
+        flex-grow: 0; /* Jangan biarkan tumbuh */
+        height: 100%;
     }
 
     .nav-links {
-        display: flex; /* Menu ditampilkan di mobile secara default tanpa hamburger */
+        /* **PERUBAHAN KRUSIAL:** Sembunyikan menu di mobile */
+        display: none; 
+        
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
-        position: static; /* Ubah dari absolute untuk normal flow */
-        top: auto;
-        left: auto;
-        width: auto; /* Width auto */
-        background: none; /* Hapus background putih menu mobile */
-        box-shadow: none; /* Hapus shadow menu mobile */
-        padding: 0; /* Hapus padding menu mobile */
-        border-top: none; /* Hapus border menu mobile */
-        max-height: unset; /* Hapus max-height untuk menu mobile */
-        overflow: visible; /* Hapus overflow */
-        transition: none; /* Hapus transisi menu mobile */
+        position: absolute; /* Menu akan muncul di luar flow normal */
+        top: 100%; /* Di bawah header */
+        left: 0;
+        width: 100%;
+        background: #ffffff; /* Latar belakang putih untuk menu dropdown */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding: 20px 25px;
+        border-top: 1px solid #f0f0f0;
+        max-height: 0; /* Untuk animasi slide (meskipun tanpa JS toggle) */
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        z-index: 10; /* Pastikan menu di atas konten */
     }
-    /* Hapus .nav-links.active karena tidak lagi pakai toggle */
-    /* .nav-links.active { display: flex; ... } */
+    /* .nav-links.active { display: flex; max-height: 300px; padding: 20px 25px; } - Ini untuk hamburger */
 
     .nav-links li:first-child {
         margin-left: 0; /* Hapus margin kiri */
-        margin-right: auto; /* Biarkan ini untuk dorong logo ke kiri */
+        margin-right: auto; /* Hapus auto-margin */
     }
     .nav-links li {
-        width: auto; /* Hapus width 100% untuk li di mobile */
-        border-bottom: none; /* Hapus border bawah li */
+        width: 100%; /* Item menu mengisi lebar penuh dropdown */
+        border-bottom: 1px solid #f0f0f0; /* Garis pemisah */
+    }
+    .nav-links li:last-child {
+        border-bottom: none;
     }
     .nav-links a {
-        color: #fff; /* **PERUBAHAN:** Warna teks menu mobile menjadi putih */
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Tambah text-shadow untuk menu mobile */
+        color: #333; /* Warna teks menu mobile agar terlihat di latar putih */
+        text-shadow: none; /* Hapus text-shadow di mobile */
+        padding: 10px 0;
     }
     
     /* Tombol Hamburger - HAPUS TOTAL DARI CSS MOBILE INI */
+    /* Karena sudah dihapus di HTML */
     .hamburger {
-        display: none; /* Pastikan dihapus dari mobile juga */
+        display: none;
     }
 
 
@@ -409,129 +417,5 @@ footer {
     }
     .layanan-grid {
         grid-template-columns: 1fr;
-    }
-}
-
-
-/* Styling untuk Bagian Kontak Kami - Ditempatkan di bagian bawah CSS */
-.text-center {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-    align-items: flex-start;
-}
-
-.contact-info, .contact-form {
-    background-color: #f9f9f9;
-    padding: 35px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    height: 100%;
-}
-
-.contact-info h3, .contact-form h3 {
-    color: #007bff;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-}
-
-.contact-info p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-.contact-info i {
-    font-size: 1.2rem;
-    color: #28a745;
-    margin-top: 3px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #555;
-    font-size: 0.95rem;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-    outline: none;
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.btn-submit {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-}
-
-.btn-submit:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
-}
-
-.disclaimer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 30px;
-}
-
-/* Responsive adjustment for contact section */
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    .contact-info, .contact-form {
-        padding: 25px;
-    }
-    .text-center {
-        font-size: 1rem;
     }
 }
