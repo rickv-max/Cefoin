@@ -1,33 +1,3 @@
-// JavaScript untuk Hamburger Menu
-const hamburger = document.getElementById('hamburger-menu');
-const navLinks = document.getElementById('nav-links');
-
-// Fungsi untuk toggle menu
-function toggleMenu() {
-    navLinks.classList.toggle('active');
-    // document.body.classList.toggle('no-scroll'); // Opsional: untuk mencegah scrolling body saat menu mobile terbuka
-}
-
-// Tambahkan event listener ke tombol hamburger
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', toggleMenu);
-
-    // Menutup menu saat salah satu link diklik (untuk pengalaman mobile yang lebih baik)
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            // Tutup menu hanya jika di layar kecil (lebar kurang dari atau sama dengan 768px)
-            if (window.innerWidth <= 768) {
-                navLinks.classList.remove('active');
-                // document.body.classList.remove('no-scroll'); 
-            }
-        });
-    });
-} else {
-    // Pesan ini akan muncul di console browser jika ada masalah dengan ID
-    console.warn("Error: Elemen dengan ID 'hamburger-menu' atau 'nav-links' tidak ditemukan. Pastikan ID di HTML sudah benar.");
-}
-
-
 // JavaScript untuk Animasi Reveal on Scroll
 const revealableElements = document.querySelectorAll('.revealable');
 
