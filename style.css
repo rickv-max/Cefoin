@@ -27,7 +27,7 @@ ul {
 
 /* Header & Navigation */
 header {
-    background: #ffffff;
+    background: #ffffff; /* Ini akan ditimpa oleh background nav */
     padding: 1.2rem 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     position: sticky;
@@ -43,55 +43,57 @@ nav {
     margin: 0 auto;
     padding: 0 25px;
     position: relative;
+    /* **PERUBAHAN UTAMA DI SINI:** Logo sebagai background NAV */
+    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=3') no-repeat center center;
+    background-size: 100% 100%; /* Membuat logo mengisi penuh lebar dan tinggi NAV */
+    /* Atau coba 'contain' jika ingin seluruh logo terlihat tanpa terpotong: */
+    /* background-size: contain; */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */ /* Pastikan tidak berulang */
 }
 
-/* Modifikasi untuk Logo Container */
+/* Overlay transparan di atas background logo NAV */
+nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Overlay putih transparan */
+    z-index: 0; /* Pastikan di belakang konten nav (menu, hamburger) */
+}
+
+/* Gaya untuk div.logo yang sekarang kosong */
 .logo {
-    display: flex;
-    justify-content: center; /* Pusatkan gambar logo secara horizontal */
-    align-items: center; /* Pusatkan gambar logo secara vertikal */
-    height: 60px; /* Atur tinggi container logo */
-    overflow: hidden; /* Pastikan gambar tidak keluar dari container */
-    padding: 0; /* Hapus padding lama, padding akan diatur di img */
-    flex-grow: 1; /* Biarkan area logo ini tumbuh */
-    /* Hapus semua background, min-width, box-shadow lama dari sini */
-    /* background: none; */
-    /* min-width: unset; */
-    /* box-shadow: none; */
+    display: flex; /* Pertahankan flex untuk alignment nanti jika ada elemen lain */
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Atur tinggi agar nav memiliki tinggi yang sama */
+    flex-grow: 1; /* Biarkan area logo ini mengisi ruang */
+    position: relative; /* Untuk z-index */
+    z-index: 1; /* Pastikan di atas overlay */
 }
 
-/* Hapus juga :before karena logo sekarang adalah img, bukan background */
-/* .logo::before { display: none; } */
-
-
-/* Gaya untuk elemen gambar logo */
-.logo img {
-    max-width: 100%; /* Batasi lebar agar tidak melebihi container */
-    height: auto; /* Jaga aspek rasio */
-    display: block; /* Hapus spasi bawah default */
-    /* Jika logo ingin mengisi penuh tinggi/lebar container, gunakan object-fit */
-    object-fit: contain; /* Memastikan seluruh gambar terlihat di dalam container */
-    padding: 5px 0; /* Tambahkan sedikit padding vertikal jika perlu */
-    opacity: 1; /* Set opacity logo, sesuaikan jika perlu */
-}
-
-/* Atur warna teks h1 dan p agar tidak lagi di dalam .logo */
-/* Karena h1 dan p tidak lagi ada di .logo, gaya ini menjadi tidak relevan */
-/* Namun, jika Anda berencana menempatkan teks di tempat lain, perlu gaya baru */
-/* .logo h1, .logo p { display: none; } */
+/* Hapus gaya img di dalam .logo karena img sudah tidak ada di HTML */
+/* .logo img { display: none; } */
+/* Hapus juga gaya h1 dan p lama jika tidak ada di HTML */
 
 
 .nav-links {
     display: flex;
     gap: 35px;
+    position: relative; /* Pastikan di atas overlay nav */
+    z-index: 1; /* Pastikan di atas overlay */
 }
 
 .nav-links a {
-    color: #555;
+    color: #555; /* Ubah warna teks menu agar terbaca di atas logo transparan */
     font-weight: 600;
     padding: 8px 0;
     transition: all 0.3s ease;
     position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Tambahkan bayangan teks */
 }
 
 .nav-links a:hover {
@@ -122,6 +124,8 @@ nav {
     font-weight: 600;
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
     transition: all 0.3s ease;
+    position: relative; /* Pastikan di atas overlay nav */
+    z-index: 1;
 }
 
 .btn-primary:hover {
@@ -139,7 +143,7 @@ nav {
     border: none;
     color: #007bff;
     padding: 5px;
-    z-index: 1001;
+    z-index: 1001; /* Pastikan di atas semua (logo, overlay, menu lain) */
     transition: transform 0.3s ease;
 }
 .hamburger:hover {
@@ -147,7 +151,7 @@ nav {
 }
 
 
-/* Hero Section - With Parallax Effect */
+/* Hero Section - Dengan Parallax Effect */
 #hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
     background-attachment: fixed;
@@ -313,11 +317,8 @@ footer {
         height: 50px; /* Tinggi logo di mobile */
         /* min-width: unset; */ /* min-width tidak perlu di sini */
     }
-    .logo img {
-        /* Sesuaikan ukuran logo di background untuk ponsel */
-        max-width: 100%;
-        height: auto;
-    }
+    /* Hapus gaya img di dalam .logo untuk mobile juga */
+    /* .logo img { display: none; } */
 
     .nav-links {
         display: none;
