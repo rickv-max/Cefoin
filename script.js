@@ -2,17 +2,24 @@
 const hamburger = document.getElementById('hamburger-menu');
 const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) { // Tutup menu hanya jika di layar kecil
-            navLinks.classList.remove('active');
-        }
+// Pastikan elemen ditemukan sebelum menambahkan event listener
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
-});
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            // Tutup menu hanya jika di layar kecil (lebar kurang dari atau sama dengan 768px)
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+} else {
+    console.warn("Hamburger menu atau nav-links tidak ditemukan di DOM. Periksa ID HTML.");
+}
+
 
 // JavaScript untuk Animasi Reveal on Scroll
 const revealableElements = document.querySelectorAll('.revealable');
