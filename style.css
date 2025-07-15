@@ -148,9 +148,10 @@ div.logo {
 
 /* Hero Section - Dengan Parallax Effect */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800/6A5ACD/FFFFFF?text=Hero+Background+Test') no-repeat center center; /* **PERUBAHAN: Placeholder universal untuk testing** */
-    background-attachment: fixed;
-    background-size: cover; /* Background akan mengisi penuh area hero, mungkin terpotong */
+    /* **PERUBAHAN:** Menyesuaikan linear-gradient dan menghapus background-attachment: fixed */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2038.jpeg') no-repeat center center; /* URL gambar hero Anda */
+    /* background-attachment: fixed; **DIHAPUS** */
+    background-size: cover; /* Background akan mengisi penuh area hero */
     color: #fff;
     text-align: center;
     padding: 120px 20px;
