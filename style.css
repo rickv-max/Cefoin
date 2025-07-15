@@ -1,4 +1,4 @@
-/* Atur box-sizing secara global untuk mencegah masalah overflow */
+/* Reset dasar */
 html {
     box-sizing: border-box;
 }
@@ -6,18 +6,13 @@ html {
     box-sizing: inherit;
 }
 
-/* General Styling */
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     line-height: 1.8;
     color: #4a4a4a;
     background-color: #f8f9fa;
-    overflow-x: hidden; /* Pastikan tidak ada scrollbar horizontal */
-}
-/* Untuk mencegah scrolling body saat modal aktif */
-body.no-scroll {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,9 +32,8 @@ ul {
     margin: 0;
 }
 
-/* Header & Navigation */
 header {
-    background: #ffffff; /* Ini akan ditimpa oleh background nav */
+    background: #ffffff;
     padding: 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     position: sticky;
@@ -51,521 +45,70 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Lebar 100% dari parent (header) */
-    max-width: 1200px; /* Pertahankan max-width agar konten nav terpusat di desktop */
-    margin: 0 auto; /* Pusatkan nav */
-    padding: 0 25px; /* Padding konten di dalam nav, agar tidak menempel tepi */
-    position: relative;
-    min-height: 90px; /* Tinggi NAV yang tetap */
-
-    /* LOGO SEBAGAI BACKGROUND PENUH NAV - TANPA TRANSPARANSI */
-    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=9') no-repeat center center;
-    background-size: contain; /* Logo utuh tanpa terpotong. Mungkin ada ruang di sisi. */
-    
-    overflow: hidden; /* Pastikan tidak ada scrollbar dari background */
-    pointer-events: auto; /* Pastikan NAV bisa menerima klik */
+    padding: 1rem 2rem;
 }
-
-/* NAV OVERLAY (TRANSPARANSI LOGO) DIHAPUS TOTAL */
-
-
-/* Gaya untuk div.logo (yang sekarang hanya placeholder kosong di HTML) */
-div.logo {
-    flex-basis: 250px; /* Berikan lebar tetap untuk area logo di nav */
-    flex-shrink: 0; /* Jangan biarkan mengecil */
-    height: 100%; /* Mengisi tinggi nav */
-    display: flex;
-    justify-content: flex-start; /* Logo akan di kiri */
-    align-items: center;
-    position: relative;
-    z-index: 1; /* Pastikan di atas background nav */
-    background: none; 
-    min-width: unset;
-    box-shadow: none;
-    padding: 0;
-}
-
 
 .nav-links {
-    display: flex; /* Display untuk desktop */
-    gap: 35px;
-    position: relative;
-    z-index: 1; /* Pastikan di atas background nav */
-    flex-grow: 1; /* Agar menu mengisi ruang yang tersedia di kanan */
-    justify-content: flex-end; /* Dorong menu ke kanan */
+    display: flex;
+    gap: 1.5rem;
 }
 
-.nav-links li:first-child {
-    margin-right: auto; /* Dorong item pertama (Beranda) ke kiri, buat ruang untuk logo */
-    margin-left: 20px; /* Contoh: jarak logo dari sisi kiri nav */
-}
-
-.nav-links a {
-    color: #fff; /* Warna teks menu menjadi putih */
+.nav-links li a {
     font-weight: 600;
-    padding: 8px 0;
-    transition: all 0.3s ease;
-    position: relative;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9), -1px -1px 3px rgba(0,0,0,0.9); /* Bayangan gelap yang sangat kuat */
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
 }
 
-.nav-links a:hover {
-    color: #ddd;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: #ddd; /* Warna hover lebih terang */
-    transition: width 0.3s ease-out;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Primary Button in Nav */
-.btn-primary {
-    background-color: #007bff;
-    color: #fff !important;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: 600;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-
-/* Hero Section - Dengan Parallax Effect */
-#hero {
-    /* **PERUBAHAN ULTIMATE:** Hapus linear-gradient dan tambahkan !important */
-    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2038.jpeg') no-repeat center center / cover !important; /* **URL GAMBAR HERO ANDA + !important** */
-    
-    background-attachment: scroll; /* Pastikan tidak fixed, untuk kompatibilitas */
-    /* background-size: cover; Sudah termasuk di shorthand background di atas */
+.nav-links li a.btn-primary {
+    background-color: #4a90e2;
     color: #fff;
-    text-align: center;
-    padding: 120px 20px;
-    height: 75vh;
+    border-radius: 4px;
+}
+
+.nav-links li a.btn-primary:hover {
+    background-color: #357ab8;
+}
+
+/* === BAGIAN HERO === */
+#hero {
+    background-image: url('images/IMG_2039.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 2rem;
     position: relative;
-    overflow: hidden;
-}
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Pertahankan gradient ringan ini jika diinginkan, atau set ke transparent */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent); 
-    z-index: 1;
 }
 
 .hero-content {
-    max-width: 900px;
-    position: relative;
-    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 8px;
 }
 
-#hero h2 {
-    font-size: 3.8rem;
-    margin-bottom: 25px;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-#hero p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-.btn-hero {
-    background-color: #28a745;
-    color: #fff !important;
-    padding: 18px 40px;
-    border-radius: 50px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-hero:hover {
-    background-color: #218838;
-}
-
-/* General Section Styling */
-.section-padded {
-    padding: 80px 25px;
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: #ffffff;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.07);
-    border-radius: 12px;
-}
-
-.section-padded h2 {
-    text-align: center;
-    font-size: 3.2rem;
-    color: #2c3e50;
-    margin-bottom: 50px;
-    position: relative;
-}
-.section-padded h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background-color: #007bff;
-    margin: 20px auto 0;
-    border-radius: 2px;
-}
-
-/* Layanan Section */
-.layanan-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.layanan-item {
-    background-color: #f0f8ff;
-    padding: 35px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid #e0eaff;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.layanan-item.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.layanan-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.layanan-item h3 {
-    color: #007bff;
-    margin-bottom: 15px;
-    font-size: 1.7rem;
-}
-.layanan-item p {
-    font-size: 1.05rem;
-}
-
-/* Footer */
-footer {
-    background: #2c3e50;
-    color: #ecf0f1;
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 60px;
-    font-size: 0.95rem;
-}
-
-/* Styling untuk Bagian Kontak Kami */
-.text-center {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-    align-items: flex-start;
-}
-
-.contact-info, .contact-form {
-    background-color: #f9f9f9;
-    padding: 35px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    height: 100%;
-}
-
-.contact-info h3, .contact-form h3 {
-    color: #007bff;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-}
-
-.contact-info p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-.contact-info i {
+.hero-content p {
     font-size: 1.2rem;
-    color: #28a745;
-    margin-top: 3px;
+    margin-bottom: 2rem;
 }
 
-/* Styling untuk Formulir Kontak (di dalam modal) */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #555;
-    font-size: 0.95rem;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-/* Styling untuk input yang invalid */
-.form-group input:required:invalid,
-.form-group textarea:required:invalid {
-    border-color: #dc3545; /* Warna merah untuk field yang wajib tapi belum diisi */
-}
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-    outline: none;
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.btn-submit {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: #007bff;
+.hero-content .btn-primary {
+    background-color: #e74c3c;
     color: #fff;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.btn-submit:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
-}
-/* Styling untuk tombol submit yang disabled */
-.btn-submit:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-    opacity: 0.7;
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-.disclaimer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 30px;
-}
-.disclaimer-modal { /* Styling khusus untuk disclaimer di dalam modal */
-    text-align: center;
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 20px;
-}
-
-/* Styling untuk Pop-up Modal */
-.modal-overlay {
-    display: none; /* Sembunyikan secara default */
-    position: fixed; /* Tetap di layar */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Latar belakang gelap transparan */
-    justify-content: center; /* Pusatkan konten horizontal */
-    align-items: center; /* Pusatkan konten vertikal */
-    z-index: 10000; /* Pastikan di atas semua konten lain */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    overflow-y: auto; /* Izinkan scroll jika konten modal terlalu panjang */
-    -webkit-overflow-scrolling: touch; /* Untuk scrolling yang mulus di iOS */
-}
-
-.modal-overlay.active {
-    display: flex; /* Tampilkan ketika kelas active ditambahkan oleh JS */
-    opacity: 1;
-}
-
-.modal-content {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    max-width: 500px; /* Lebar maksimal modal */
-    width: 90%; /* Lebar responsif */
-    position: relative;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.modal-overlay.active .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #777;
-    transition: color 0.2s ease;
-    line-height: 1; /* Hapus spasi ekstra */
-}
-
-.modal-close-btn:hover {
-    color: #333;
-}
-
-
-/* Responsive adjustment for contact section & general mobile */
-@media (max-width: 768px) {
-    /* nav layout untuk mobile */
-    nav {
-        flex-direction: row;
-        justify-content: flex-start; /* Dorong konten ke kiri di mobile */
-        gap: 0;
-        min-height: 60px;
-    }
-
-    div.logo {
-        flex-basis: 20%; /* Berikan sedikit ruang untuk logo di mobile */
-        flex-grow: 0; /* Jangan biarkan tumbuh */
-        height: 100%;
-    }
-
-    /* PERUBAHAN KRUSIAL: Sembunyikan menu di mobile */
-    .nav-links {
-        display: none; /* Sembunyikan di mobile secara default */
-        
-        flex-direction: column; /* Tetap column untuk dropdown */
-        gap: 15px;
-        align-items: flex-start;
-        position: absolute; /* Menu akan muncul di luar flow normal */
-        top: 100%; /* Di bawah header */
-        left: 0;
-        width: 100%;
-        background: #ffffff; /* Latar belakang putih untuk menu dropdown */
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        padding: 20px 25px;
-        border-top: 1px solid #f0f0f0;
-        max-height: 0; /* Untuk animasi slide (meskipun tanpa JS toggle) */
-        overflow: hidden;
-        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-        z-index: 10; /* Pastikan menu di atas konten */
-    }
-
-    .nav-links li:first-child {
-        margin-left: 0; /* Hapus margin kiri */
-        margin-right: auto; /* Hapus auto-margin */
-    }
-    .nav-links li {
-        width: 100%; /* Item menu mengisi lebar penuh dropdown */
-        border-bottom: 1px solid #f0f0f0; /* Garis pemisah */
-    }
-    .nav-links li:last-child {
-        border-bottom: none;
-    }
-    .nav-links a {
-        color: #333; /* Warna teks menu mobile agar terlihat di latar putih */
-        text-shadow: none; /* Hapus text-shadow di mobile */
-        padding: 10px 0;
-    }
-    
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    .contact-info, .contact-form {
-        padding: 25px;
-    }
-    .text-center {
-        font-size: 1rem;
-    }
-
-    .modal-content {
-        padding: 25px; /* Kurangi padding modal di mobile */
-        width: 95%; /* Lebar modal lebih besar di mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-links {
-        padding: 15px; /* Kurangi padding di layar sangat kecil */
-    }
-    .nav-links a {
-        font-size: 0.95rem;
-    }
-    #hero h2 {
-        font-size: 2rem;
-    }
-    #hero p {
-        font-size: 1rem;
-    }
-    .btn-hero {
-        padding: 12px 25px;
-        font-size: 1rem;
-    }
-    .section-padded h2 {
-        font-size: 1.8rem;
-    }
-    .layanan-grid {
-        grid-template-columns: 1fr;
-    }
+.hero-content .btn-primary:hover {
+    background-color: #c0392b;
 }
