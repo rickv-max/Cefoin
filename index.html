@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -6,6 +6,11 @@
   <title>CEFOIN</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    .hidden-section {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,41 +22,92 @@
           <img src="https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2047.png" alt="Logo CEFOIN" />
         </a>
       </div>
-      <ul class="nav-links" id="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#beranda">Beranda</a></li>
         <li><a href="#layanan">Layanan</a></li>
         <li><a href="#program">Program</a></li>
         <li><a href="#tim">Tim Kami</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">☰</div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO / BERANDA -->
   <section id="hero">
-    <div class="hero-image-wrapper">
-      <img src="https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2039.jpeg" alt="Hero Image" class="hero-img" />
-    </div>
     <div class="hero-content">
       <h1>Anda Tidak Sendiri!!! Kami siap mendampingi.</h1>
       <p>Mendampingi penyintas kekerasan seksual dengan bantuan hukum dan dukungan yang berpihak pada keadilan.</p>
-      <a href="#" class="btn-primary" id="open-modal-btn">Ajukan Bantuan</a>
+      <a href="#layanan" class="btn-primary">Ajukan Bantuan</a>
     </div>
   </section>
 
-  <!-- SECTION TENTANG -->
-  <section id="tentang" class="section-content">
+  <!-- TENTANG KAMI -->
+  <section class="section-content" id="tentang">
     <div class="content-box">
       <h2>Tentang Kami</h2>
-      <p>
-        CEFOIN adalah komunitas yang berdedikasi untuk memberikan pendampingan hukum dan dukungan komprehensif bagi penyintas kekerasan seksual. Misi kami adalah menciptakan ruang aman, memberikan akses keadilan, dan mengadvokasi hak-hak penyintas.
-      </p>
-      <p>
-        Dengan tim profesional dan relawan yang berempati, kami berkomitmen untuk menjadi garda terdepan dalam memperjuangkan hak-hak anak dan perempuan, membangun kesadaran, serta mengedukasi masyarakat tentang pentingnya pencegahan kekerasan seksual dan penanganan yang tepat bagi korban.
-      </p>
+      <p>CEFOIN adalah komunitas yang berdedikasi untuk memberikan pendampingan hukum dan dukungan komprehensif bagi penyintas kekerasan seksual. Misi kami adalah menciptakan ruang aman, memberikan akses keadilan, dan mengadvokasi hak-hak penyintas.</p>
+      <p>Dengan tim profesional dan relawan yang berempati, kami berkomitmen untuk menjadi garda terdepan dalam memperjuangkan hak-hak anak dan perempuan, membangun kesadaran, serta mengedukasi masyarakat tentang pentingnya pencegahan kekerasan seksual dan penanganan yang tepat bagi korban.</p>
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <!-- LAYANAN (disembunyikan default) -->
+  <section class="section-content hidden-section" id="layanan">
+    <div class="content-box">
+      <h2>Layanan Kami</h2>
+      <p>CEFOIN menyediakan layanan pendampingan hukum, konseling psikologis, advokasi, dan mediasi komunitas untuk penyintas kekerasan seksual.</p>
+    </div>
+  </section>
+
+  <!-- PROGRAM (disembunyikan default) -->
+  <section class="section-content hidden-section" id="program">
+    <div class="content-box">
+      <h2>Program</h2>
+      <p>Kami aktif menjalankan berbagai program seperti penyuluhan hukum, kampanye kesadaran publik, pelatihan relawan, dan edukasi gender di sekolah dan komunitas.</p>
+    </div>
+  </section>
+
+  <!-- TIM KAMI (disembunyikan default) -->
+  <section class="section-content hidden-section" id="tim">
+    <div class="content-box">
+      <h2>Tim Kami</h2>
+      <p>Tim kami terdiri dari advokat profesional, psikolog berpengalaman, dan relawan yang berdedikasi dalam memperjuangkan keadilan bagi penyintas.</p>
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const navItems = document.querySelectorAll(".nav-links li a");
+      const sections = ["layanan", "program", "tim"];
+
+      navItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+          const target = item.getAttribute("href").substring(1);
+
+          // Sembunyikan semua yang ada di daftar
+          sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) section.style.display = "none";
+          });
+
+          // Tampilkan hanya bagian yang diklik
+          const selected = document.getElementById(target);
+          if (selected) {
+            selected.style.display = "block";
+            selected.scrollIntoView({ behavior: "smooth" });
+          }
+
+          // Tutup menu mobile
+          document.getElementById("navLinks").classList.remove("active");
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>
