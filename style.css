@@ -1,4 +1,4 @@
-/* Reset dan font dasar */
+/* RESET DASAR */
 body, html {
   margin: 0;
   padding: 0;
@@ -6,6 +6,7 @@ body, html {
   scroll-behavior: smooth;
 }
 
+/* HEADER */
 header {
   background-color: white;
   padding: 10px 20px;
@@ -40,17 +41,23 @@ header {
   cursor: pointer;
 }
 
+/* HERO */
 #hero {
   position: relative;
+  text-align: center;
+}
+
+.hero-image-wrapper {
   width: 100%;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
 .hero-img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .hero-content {
@@ -58,10 +65,22 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-  padding: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  padding: 1.5rem;
+  z-index: 2;
+  width: 90%;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
 }
 
 .btn-primary {
@@ -73,10 +92,9 @@ header {
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 1rem;
-  display: inline-block;
 }
 
+/* SECTION CONTENT */
 .section-content {
   padding: 60px 20px;
   background-color: #f9f9f9;
