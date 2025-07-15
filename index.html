@@ -57,23 +57,27 @@
         Silakan isi formulir berikut untuk mengajukan bantuan hukum dari CEFOIN.  
         Semua kolom wajib diisi. Data Anda akan kami jaga kerahasiaannya.
       </p>
-      <form id="bantuanForm">
+      <form action="https://formsubmit.co/rickymaulana080503@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_autoresponse" value="Terima kasih telah menghubungi CEFOIN. Kami akan segera menindaklanjuti bantuan Anda.">
+
         <label>Nama Lengkap</label>
-        <input type="text" id="nama" required placeholder="Contoh: Rina Andini" />
+        <input type="text" name="Nama Lengkap" required placeholder="Contoh: Rina Andini" />
 
         <label>Domisili</label>
-        <input type="text" id="domisili" required placeholder="Misal: Surabaya, Jawa Timur" />
+        <input type="text" name="Domisili" required placeholder="Misal: Surabaya, Jawa Timur" />
 
         <label>Nomor Telepon</label>
-        <input type="tel" id="telepon" required placeholder="Nomor aktif yang bisa dihubungi" />
+        <input type="tel" name="Telepon" required placeholder="Nomor aktif yang bisa dihubungi" />
 
         <label>Subjek Bantuan</label>
-        <input type="text" id="subjek" required placeholder="Misal: Pendampingan hukum" />
+        <input type="text" name="Subjek" required placeholder="Misal: Pendampingan hukum" />
 
         <label>Masalah Anda</label>
-        <textarea id="masalah" rows="4" required placeholder="Jelaskan masalah yang sedang Anda alami..."></textarea>
+        <textarea name="Masalah" rows="4" required placeholder="Jelaskan masalah yang sedang Anda alami..."></textarea>
 
-        <button type="submit" id="submitBtn" disabled>Ajukan Sekarang</button>
+        <button type="submit">Ajukan Sekarang</button>
       </form>
     </div>
   </div>
@@ -86,8 +90,6 @@
 
     const modal = document.getElementById("bantuanModal");
     const openFormBtn = document.getElementById("openFormBtn");
-    const form = document.getElementById("bantuanForm");
-    const submitBtn = document.getElementById("submitBtn");
 
     openFormBtn.addEventListener("click", function (e) {
       e.preventDefault();
@@ -97,21 +99,6 @@
     function closeModal() {
       modal.style.display = "none";
     }
-
-    form.addEventListener("input", function () {
-      const isValid = [...form.elements].every(
-        (el) => el.value.trim() !== "" && el.tagName !== "BUTTON"
-      );
-      submitBtn.disabled = !isValid;
-    });
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("Permintaan bantuan berhasil dikirim!");
-      closeModal();
-      form.reset();
-      submitBtn.disabled = true;
-    });
   </script>
 
 </body>
