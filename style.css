@@ -28,7 +28,7 @@ ul {
 /* Header & Navigation */
 header {
     background: #ffffff; /* Ini akan ditimpa oleh background nav */
-    padding: 1.2rem 0;
+    padding: 0; /* Hapus padding header agar background nav bisa penuh */
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     position: sticky;
     top: 0;
@@ -39,73 +39,66 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 100vw; /* **PERUBAHAN:** Gunakan 100vw untuk lebar layar penuh */
     margin: 0 auto;
-    padding: 0 25px; /* Padding ini untuk jarak konten nav dari tepi */
+    padding: 0 25px; /* Padding konten di dalam nav */
     position: relative;
     min-height: 80px; /* Atur tinggi minimum NAV agar logo bisa mengisi penuh */
 
-    /* **PERUBAHAN UTAMA DI SINI:** Logo sebagai background PENUH NAV */
-    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=5') no-repeat center center;
-    background-size: cover; /* Logo akan mengisi penuh NAV (mungkin terpotong sedikit) */
-    /* Jika Anda ingin seluruh logo terlihat tanpa terpotong (mungkin ada ruang kosong di sisi), gunakan: */
-    /* background-size: contain; */ 
+    /* **LOGO SEBAGAI BACKGROUND PENUH NAV - TANPA TRANSPARANSI** */
+    background: url('https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/d3171e09-0113-496f-b8c8-a6249086ef92.jpeg?cache-bust=6') no-repeat center center;
+    background-size: contain; /* Pastikan seluruh logo terlihat, tanpa terpotong */
+    /* Jika ingin logo selalu mengisi penuh dan tidak peduli terpotong, gunakan: */
+    /* background-size: cover; */ 
     
     overflow: hidden; /* Pastikan tidak ada scrollbar dari background */
 }
 
-/* Overlay transparan di atas background logo NAV */
-nav::before {
+/* **NAV OVERLAY (TRANSPARANSI LOGO) DIHAPUS TOTAL** */
+/* nav::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.85); /* Overlay putih transparan yang cukup kuat */
-    z-index: 0; /* Pastikan di belakang konten nav (menu, hamburger) */
-}
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: 0;
+} */
 
-/* Gaya untuk div.logo yang sekarang kosong */
+/* Gaya untuk div.logo yang sekarang kosong (hanya sebagai placeholder untuk flexbox) */
 .logo {
-    display: flex; /* Pertahankan flex untuk alignment nanti jika ada elemen lain */
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Agar mengisi tinggi nav */
-    flex-grow: 1; /* Biarkan area logo ini mengisi ruang yang tersedia */
-    position: relative; /* Untuk z-index */
-    z-index: 1; /* Pastikan di atas overlay */
-    /* Hapus semua gaya background dan lain-lain dari sini */
+    height: 100%;
+    flex-grow: 1; /* Agar mengisi ruang yang tersedia */
+    position: relative;
+    z-index: 1; /* Pastikan di atas background nav */
     background: none; 
     min-width: unset;
     box-shadow: none;
     padding: 0;
 }
 
-/* Hapus gaya img di dalam .logo karena img sudah tidak ada di HTML */
-/* .logo img { display: none; } */
-/* Hapus juga gaya h1 dan p lama dari .logo */
-/* .logo h1, .logo p { display: none; } */
-
-
 .nav-links {
     display: flex;
     gap: 35px;
-    position: relative; /* Pastikan di atas overlay nav */
-    z-index: 1; /* Pastikan di atas overlay */
+    position: relative;
+    z-index: 1; /* Pastikan di atas background nav */
 }
 
 .nav-links a {
-    color: #333; /* Warna teks menu yang jelas di atas overlay putih */
+    color: #fff; /* **PERUBAHAN:** Warna teks menu menjadi putih */
     font-weight: 600;
     padding: 8px 0;
     transition: all 0.3s ease;
     position: relative;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.4); /* Tambahkan bayangan teks agar lebih jelas */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* **PERUBAHAN:** Tambahkan bayangan gelap agar terbaca */
 }
 
 .nav-links a:hover {
-    color: #007bff;
+    color: #ddd;
 }
 
 .nav-links a::after {
@@ -115,7 +108,7 @@ nav::before {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: #007bff;
+    background-color: #ddd; /* Warna hover lebih terang */
     transition: width 0.3s ease-out;
 }
 
@@ -132,14 +125,12 @@ nav::before {
     font-weight: 600;
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
     transition: all 0.3s ease;
-    position: relative; /* Pastikan di atas overlay nav */
+    position: relative;
     z-index: 1;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
 }
 
 /* Hamburger Menu */
@@ -149,9 +140,9 @@ nav::before {
     cursor: pointer;
     background: none;
     border: none;
-    color: #333; /* Warna hamburger yang jelas di atas overlay putih */
+    color: #fff; /* **PERUBAHAN:** Warna hamburger menjadi putih */
     padding: 5px;
-    z-index: 1001; /* Pastikan di atas semua (logo, overlay, menu lain) */
+    z-index: 1001; /* Pastikan di atas semua (background logo, menu lain) */
     transition: transform 0.3s ease;
 }
 .hamburger:hover {
@@ -218,8 +209,6 @@ nav::before {
 
 .btn-hero:hover {
     background-color: #218838;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
 }
 
 /* General Section Styling */
@@ -319,11 +308,11 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         gap: 0;
-        min-height: 60px; /* Tinggi nav di mobile */
+        min-height: 60px;
     }
 
     .logo {
-        height: 100%; /* Mengisi tinggi nav */
+        height: 100%;
     }
 
     .nav-links {
@@ -351,6 +340,8 @@ footer {
     }
 
     .nav-links a {
+        color: #333; /* Warna teks menu di mobile */
+        text-shadow: none; /* Hapus text-shadow di mobile */
         padding: 10px 0;
         width: 100%;
         border-bottom: 1px solid #f0f0f0;
@@ -364,6 +355,7 @@ footer {
 
     .hamburger {
         display: block;
+        color: #333; /* Warna hamburger di mobile */
     }
 
     #hero {
