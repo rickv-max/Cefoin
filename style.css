@@ -283,3 +283,27 @@ form button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+.ajukan-modal-box label {
+  font-weight: bold;
+  color: #2D3748;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.ajukan-modal-box input,
+.ajukan-modal-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  border: 1px solid #CBD5E0;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.helper-text {
+  display: block;
+  font-size: 13px;
+  color: #718096;
+  margin-bottom: 14px;
+}
