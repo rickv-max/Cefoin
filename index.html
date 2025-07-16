@@ -79,11 +79,27 @@
     <button class="modal-close-btn">&times;</button>
     <h2>Ajukan Bantuan</h2>
     <form id="ajukan-form" action="https://formsubmit.co/rickymaulana080503@gmail.com" method="POST">
-      <input type="text" name="nama" placeholder="Nama Lengkap" required />
-      <input type="text" name="domisili" placeholder="Domisili" required />
-      <input type="tel" name="telepon" placeholder="Nomor Telepon" required />
-      <input type="text" name="subjek" placeholder="Subjek Bantuan" required />
-      <textarea name="pesan" placeholder="Ceritakan Masalah Anda" required></textarea>
+      
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" placeholder="Contoh: Siti Aminah" required />
+      <small class="helper-text">Masukkan nama lengkap sesuai KTP.</small>
+
+      <label for="domisili">Domisili</label>
+      <input type="text" id="domisili" name="domisili" placeholder="Contoh: Lumajang, Jawa Timur" required />
+      <small class="helper-text">Tulis nama kota atau kabupaten tempat tinggal Anda saat ini.</small>
+
+      <label for="telepon">Nomor Telepon</label>
+      <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required />
+      <small class="helper-text">Nomor aktif yang bisa dihubungi (WhatsApp lebih disarankan).</small>
+
+      <label for="subjek">Subjek Bantuan</label>
+      <input type="text" id="subjek" name="subjek" placeholder="Contoh: Pendampingan hukum" required />
+      <small class="helper-text">Ringkas maksud atau jenis bantuan yang Anda butuhkan.</small>
+
+      <label for="pesan">Ceritakan Masalah Anda</label>
+      <textarea id="pesan" name="pesan" rows="5" placeholder="Silakan ceritakan secara singkat kronologi atau kendala Anda..." required></textarea>
+      <small class="helper-text">Informasi Anda dijaga kerahasiaannya dan hanya digunakan untuk membantu proses pendampingan.</small>
+
       <button type="submit" id="submit-form-btn" disabled>Ajukan</button>
     </form>
   </div>
