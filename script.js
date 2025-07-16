@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const contactModal = document.getElementById('contact-modal');
 const modalCloseBtn = document.querySelector('.modal-close-btn');
   const contactForm = document.getElementById('ajukan-form');
-  const submitBtn = document.getElementById('ajukan-submit-btn');
+  const submitBtn = document.getElementById('submit-form-btn');
   const requiredFields = contactForm.querySelectorAll('[required]');
 
   function checkFormValidity() {
