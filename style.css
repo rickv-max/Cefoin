@@ -373,3 +373,37 @@ form button:disabled {
   color: #2D3748;
   background-color: #fefefe;
 }
+.accordion-item {
+  border-top: 1px solid #CBD5E0;
+  padding: 10px 0;
+}
+
+.accordion-header {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+  color: #2F855A;
+}
+
+.accordion-header.active {
+  color: #276749;
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px 0;
+}
+
+.accordion-body.active {
+  display: block;
+}
+
+.accordion-body ul {
+  padding-left: 20px;
+  list-style: disc;
+}
