@@ -59,3 +59,35 @@ const observer = new IntersectionObserver((entries, obs) => {
 }, { threshold: 0.2 });
 
 revealableElements.forEach(el => observer.observe(el));
+
+function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const navItems = document.querySelectorAll(".nav-links li a");
+      const sections = ["layanan", "program", "tim"];
+
+      navItems.forEach(item => {
+        item.addEventListener("click", (e) => {
+          const target = item.getAttribute("href").substring(1);
+
+          // Sembunyikan semua yang ada di daftar
+          sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) section.style.display = "none";
+          });
+
+          // Tampilkan hanya bagian yang diklik
+          const selected = document.getElementById(target);
+          if (selected) {
+            selected.style.display = "block";
+            selected.scrollIntoView({ behavior: "smooth" });
+          }
+
+          // Tutup menu mobile
+          document.getElementById("navLinks").classList.remove("active");
+        });
+      });
+    });
