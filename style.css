@@ -87,6 +87,7 @@ nav {
 .hero-content h1 {
   font-size: 32px;
   margin-bottom: 16px;
+  font-weight: bold;
 }
 
 .hero-content p {
