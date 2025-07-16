@@ -122,48 +122,6 @@
       });
     });
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const openModalBtn = document.getElementById('open-modal-btn');
-    const modal = document.getElementById('ajukan-modal');
-    const closeBtn = document.querySelector('.ajukan-close-btn');
-    const form = document.getElementById('ajukan-form');
-    const submitBtn = document.getElementById('ajukan-submit-btn');
-    const requiredFields = form.querySelectorAll('[required]');
 
-    function checkFormValidity() {
-      let valid = true;
-      requiredFields.forEach(field => {
-        if (!field.value.trim()) valid = false;
-      });
-      submitBtn.disabled = !valid;
-    }
-
-    if (form) {
-      form.addEventListener('input', checkFormValidity);
-    }
-
-    if (openModalBtn && modal && closeBtn) {
-      openModalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('active');
-        document.body.classList.add('no-scroll');
-        checkFormValidity();
-      });
-
-      closeBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-          document.body.classList.remove('no-scroll');
-        }
-      });
-    }
-  });
-</script>
 </body>
 </html>
