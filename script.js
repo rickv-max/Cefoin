@@ -97,3 +97,11 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
   });
 });
+// Accordion untuk Visi, Misi, Struktur, Legalitas
+document.querySelectorAll(".accordion-header").forEach((item) => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("active");
+    const body = item.nextElementSibling;
+    body.classList.toggle("active");
+  });
+});
