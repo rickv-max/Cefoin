@@ -1,6 +1,5 @@
-// Hamburger Menu
 document.getElementById('hamburger').addEventListener('click', function () {
-  const nav = document.getElementById('nav-links');
+  const nav = document.getElementById('navLinks'); // ini sesuai dengan HTML kamu
   nav.classList.toggle('active');
 });
 
