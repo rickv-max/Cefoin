@@ -62,7 +62,7 @@ nav {
 }
 
 /* HERO */
-##hero {
+#hero {
   background: url("https://rickv-max.github.io/Cefoin/images/IMG_2039.jpeg") center/cover no-repeat;
   padding: 120px 20px;
   text-align: center;
