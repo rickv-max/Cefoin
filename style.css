@@ -34,7 +34,6 @@ nav {
 }
 
 .logo img {
-  height: 100px;
   height: 80px;
   object-fit: contain;
 }
@@ -200,7 +199,7 @@ form button:disabled {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .nav-links {
+  #navLinks {
     display: none;
     flex-direction: column;
     background-color: #ffffff;
@@ -212,7 +211,7 @@ form button:disabled {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
-  .nav-links.active {
+  #navLinks.active {
     display: flex;
   }
 
@@ -228,6 +227,7 @@ form button:disabled {
     font-size: 26px;
   }
 }
+
 /* AJUKAN BANTUAN MODAL */
 .ajukan-modal-overlay {
   position: fixed; inset: 0;
