@@ -328,18 +328,48 @@ form button:disabled {
     font-size: 14px;
   }
 }
+/* FAQ Accordion */
+.faq-section {
+  padding: 60px 20px;
+  background-color: #F7FAFC;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  text-align: center;
+  color: #1E3A5F;
+  margin-bottom: 40px;
+}
+
 .faq-item {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  border: 1px solid #CBD5E0;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.faq-item h3 {
-  color: #2F855A;
-  font-size: 18px;
-  margin-bottom: 8px;
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 16px;
+  background-color: #2F855A;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.faq-item p {
-  color: #4A5568;
-  font-size: 16px;
-  line-height: 1.5;
+.faq-question:hover {
+  background-color: #276749;
+}
+
+.faq-answer {
+  padding: 16px;
+  display: none;
+  color: #2D3748;
+  background-color: #fefefe;
 }
