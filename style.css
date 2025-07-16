@@ -328,3 +328,18 @@ form button:disabled {
     font-size: 14px;
   }
 }
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h3 {
+  color: #2F855A;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  color: #4A5568;
+  font-size: 16px;
+  line-height: 1.5;
+}
