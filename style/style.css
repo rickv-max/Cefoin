@@ -372,6 +372,15 @@ form button:disabled {
   cursor: not-allowed;
 }
 
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   #navLinks {
