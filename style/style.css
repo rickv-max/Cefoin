@@ -34,7 +34,7 @@ nav {
 }
 
 .logo img {
-  max-height: 40px; /* atau 36px kalau mau lebih kecil */
+  max-height: 60px; /* atau 36px kalau mau lebih kecil */
   height: auto;
   width: auto;
   display: block;
