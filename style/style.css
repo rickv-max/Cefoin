@@ -113,7 +113,7 @@ nav {
 /* ====== LAYANAN ====== */
 #layanan {
   padding: 80px 20px;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  /* Ini menggantikan warna solid */
   text-align: center;
 }
 
@@ -164,7 +164,7 @@ nav {
 /* ====== PROGRAM ====== */
 #program {
   padding: 80px 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  /* Ini menggantikan warna solid */
   text-align: center;
 }
 
