@@ -339,6 +339,15 @@ nav {
   margin-bottom: 20px;
 }
 
+.ajukan-modal-box {
+  width: 90%;
+  max-width: 500px; /* Atur sesuai selera */
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
 /* FORM */
 form input, form textarea {
   width: 100%;
@@ -370,15 +379,6 @@ form button {
 form button:disabled {
   background-color: #A0AEC0;
   cursor: not-allowed;
-}
-
-.form-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* RESPONSIVE */
