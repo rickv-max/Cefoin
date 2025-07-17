@@ -427,9 +427,9 @@ form button:disabled {
   position: relative;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .ajukan-modal-box {
-    max-width: 95%;
+    max-width: 90%;
     padding: 1rem;
   }
 }
