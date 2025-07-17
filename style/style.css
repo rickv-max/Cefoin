@@ -427,6 +427,13 @@ form button:disabled {
   position: relative;
 }
 
+@media (max-width: 480px) {
+  .ajukan-modal-box {
+    max-width: 95%;
+    padding: 1rem;
+  }
+}
+
 .ajukan-close-btn {
   position: absolute;
   top: 10px; right: 15px;
