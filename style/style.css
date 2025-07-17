@@ -247,7 +247,7 @@ nav {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
-  max-width: 300px;
+  max-width: 220px;
 }
 
 .team-member:hover {
@@ -258,6 +258,7 @@ nav {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  height: auto;
 }
 
 .team-member h3 {
