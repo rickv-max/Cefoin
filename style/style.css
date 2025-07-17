@@ -212,112 +212,64 @@ nav {
 }
 
 
-/* ====== TIM KAMI ====== */
+/* ==== TIM KAMI ==== */
 #tim {
   padding: 80px 20px;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   text-align: center;
 }
 
 #tim h2 {
   font-size: 32px;
-  color: #2F855A;
   margin-bottom: 10px;
+  color: #2F855A;
 }
 
 #tim p {
   font-size: 18px;
-  color: #444;
   margin-bottom: 40px;
+  color: #444;
   max-width: 700px;
-  margin: 0 auto 40px auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+  justify-items: center;
 }
 
-/* FLIP CARD */
 .team-member {
-  background-color: transparent;
-  perspective: 1000px;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.team-member:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  backface-visibility: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
+  transition: transform 0.3s ease;
+  max-width: 300px;
 }
 
-.flip-card-front {
-  background-color: #f0fdf9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  z-index: 2;
+.team-member:hover {
+  transform: translateY(-5px);
 }
 
-.flip-card-front img {
+.team-member img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
+  height: 250px;
   object-fit: cover;
 }
 
-.flip-card-front h3 {
+.team-member h3 {
   font-size: 20px;
-  color: #276749;
-  margin: 16px 0 8px 0;
+  color: #2F855A;
+  margin-top: 16px;
 }
 
-.flip-card-front p {
+.team-member p {
   font-size: 16px;
-  color: #555;
   margin-bottom: 16px;
-}
-
-.flip-card-back {
-  background-color: #2F855A;
-  color: white;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.flip-card-back h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.flip-card-back p {
-  font-size: 16px;
-  line-height: 1.5;
+  color: #666;
 }
 
 /* SECTION */
