@@ -281,6 +281,11 @@ nav {
   margin-bottom: 40px;
 }
 
+#team {
+  background: linear-gradient(to bottom, #e0f2f1, #ffffff); /* Hijau muda ke putih */
+  padding: 80px 20px;
+}
+
 /* SECTION */
 .section-content {
   background-color: #ffffff;
