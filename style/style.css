@@ -113,9 +113,7 @@ nav {
 /* ====== LAYANAN ====== */
 #layanan {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #e0f2f1, #ffecb3, #f3e5f5, #bbdefb, #ffccbc, #c5cae9, #dcedc8);
-  background-size: 140% 140%;
-  animation: gradientBG 8s ease infinite;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  
   text-align: center;
 }
 
@@ -166,9 +164,7 @@ nav {
 /* ====== PROGRAM ====== */
 #program {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f3e5f5, #e1f5fe, #ffe0b2, #c8e6c9, #f8bbd0, #d1c4e9, #fff59d);
-  background-size: 140% 140%;
-  animation: gradientBG 8s ease infinite;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  
   text-align: center;
 }
 
@@ -219,9 +215,7 @@ nav {
 /* ==== TIM KAMI ==== */
 #tim {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #e0f7fa, #e1bee7, #f8bbd0, #ffe082, #c8e6c9, #b3e5fc, #d1c4e9);
-  background-size: 140% 140%;
-  animation: gradientBG 8s ease infinite;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  /* Ini menggantikan warna solid */
   text-align: center;
 }
 
