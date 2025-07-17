@@ -421,7 +421,7 @@ form button:disabled {
   background: #fff;
   padding: 2rem;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 360px;
   width: 90%;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   position: relative;
