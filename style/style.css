@@ -273,6 +273,14 @@ nav {
   color: #666;
 }
 
+.team-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
 /* SECTION */
 .section-content {
   background-color: #ffffff;
