@@ -239,38 +239,7 @@ nav {
   gap: 30px;
 }
 
-.team-member {
-  background-color: #f0fdf9;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.team-member:hover {
-  transform: translateY(-5px);
-}
-
-.team-member img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
-
-.team-member h3 {
-  font-size: 20px;
-  color: #276749;
-  margin-top: 16px;
-}
-
-.team-member p {
-  font-size: 16px;
-  margin-bottom: 16px;
-  color: #555;
-}
-/* Tambahan Flip Effect */
+/* FLIP CARD */
 .team-member {
   background-color: transparent;
   perspective: 1000px;
@@ -281,7 +250,7 @@ nav {
 .flip-card-inner {
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 5;
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -296,20 +265,43 @@ nav {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  backface-visibility: hidden;
   overflow: hidden;
-  background-color: #f0fdf9;
 }
 
 .flip-card-front {
+  background-color: #f0fdf9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   z-index: 2;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.flip-card-front h3 {
+  font-size: 20px;
+  color: #276749;
+  margin: 16px 0 8px 0;
+}
+
+.flip-card-front p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 16px;
 }
 
 .flip-card-back {
   background-color: #2F855A;
-  color: #fff;
+  color: white;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
