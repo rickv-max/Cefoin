@@ -215,7 +215,7 @@ nav {
 /* ==== TIM KAMI ==== */
 #tim {
   padding: 80px 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  /* Ini menggantikan warna solid */
   text-align: center;
 }
 
@@ -279,11 +279,6 @@ nav {
   gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 40px;
-}
-
-#team {
-  background: linear-gradient(to bottom, #e0f2f1, #ffffff); /* Hijau muda ke putih */
-  padding: 80px 20px;
 }
 
 /* SECTION */
