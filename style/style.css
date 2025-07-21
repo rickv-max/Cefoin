@@ -587,3 +587,11 @@ form button:disabled {
   padding-left: 20px;
   list-style: disc;
 }
+.legalitas-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
