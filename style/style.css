@@ -63,6 +63,33 @@ nav {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Latar belakang putih untuk menu */
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek modern */
+  }
+
+  .nav-links.active {
+    display: flex; /* Menampilkan menu saat class 'active' ditambahkan */
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: block; /* Menampilkan hamburger di mobile */
+  }
+}
+
 /* HERO */
 #hero {
   background: url("../images/IMG_2039.jpeg") center/cover no-repeat;
