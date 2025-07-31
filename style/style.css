@@ -631,6 +631,8 @@ form button:disabled {
   object-fit: contain;
   flex: 0 0 100%;
   aspect-ratio: 3 / 4;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); /* Untuk Safari */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); /* Standar */
 }
 
 .slider-prev, .slider-next {
