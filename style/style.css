@@ -637,7 +637,7 @@ form button:disabled {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 .gallery-content h2 {
-  font-size: 24px;
+  font-size: 18px;
   color: #000000; /* Ubah dari #2F855A ke hitam */
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
