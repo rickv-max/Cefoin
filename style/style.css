@@ -599,3 +599,74 @@ form button:disabled {
   color: #d32f2f; /* merah elegan */
   font-weight: bold;
 }
+/* GALLERY SECTION */
+#gallery {
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);
+  text-align: center;
+}
+
+.gallery-content h2 {
+  font-size: 32px;
+  color: #2F855A;
+  margin-bottom: 10px;
+}
+
+.gallery-content p {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.slider-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider img {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  object-fit: cover;
+  flex: 0 0 100%;
+}
+
+.slider-prev, .slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(47, 133, 90, 0.7);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.slider-prev {
+  left: 10px;
+}
+
+.slider-next {
+  right: 10px;
+}
+
+.slider-prev:hover, .slider-next:hover {
+  background-color: #276749;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .slider img {
+    width: 100%;
+  }
+}
