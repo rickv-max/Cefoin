@@ -112,12 +112,20 @@ if (readMoreBtn) {
   revealableElements.forEach(el => observer.observe(el));
 
   // Toggle Menu
-  function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    if (navLinks) {
-      navLinks.classList.toggle('active');
-    }
+function toggleMenu() {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) {
+    navLinks.classList.toggle('active');
   }
+}
+
+// Tambahkan event listener untuk hamburger
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
+});
 
   // FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(btn => {
