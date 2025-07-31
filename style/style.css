@@ -636,10 +636,10 @@ form button:disabled {
 
 .slider img {
   width: 100%;
-  max-width: 1000px;
   height: auto;
-  object-fit: contain; /* Ubah dari cover ke contain agar tidak terdistorsi */
+  object-fit: contain;
   flex: 0 0 100%;
+  aspect-ratio: 3 / 4; /* Rasio default untuk ponsel (3:4) */
 }
 
 .slider-prev, .slider-next {
@@ -652,7 +652,7 @@ form button:disabled {
   padding: 10px;
   cursor: pointer;
   font-size: 18px;
-  z-index: 10; /* Pastikan tombol di atas gambar */
+  z-index: 10;
 }
 
 .slider-prev {
@@ -668,13 +668,20 @@ form button:disabled {
 }
 
 /* Responsif */
-@media (max-width: 768px) {
+@media (min-width: 769px) { /* Desktop (ubah breakpoint sesuai kebutuhan) */
+  .slider img {
+    aspect-ratio: 4 / 3; /* Ubah rasio menjadi 4:3 di desktop */
+  }
+}
+
+@media (max-width: 768px) { /* Ponsel */
   .slider-container {
-    max-width: 90%; /* Mengurangi max-width pada layar kecil */
+    max-width: 90%;
   }
   
   .slider img {
+    aspect-ratio: 3 / 4; /* Tetap 3:4 di ponsel */
     width: 100%;
-    max-width: none; /* Membiarkan gambar menyesuaikan container */
+    height: auto;
   }
 }
