@@ -84,6 +84,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  
+  // Toggle Teks Selengkapnya
+const readMoreBtn = document.querySelector('.read-more-btn');
+if (readMoreBtn) {
+  readMoreBtn.addEventListener('click', () => {
+    const fullText = readMoreBtn.previousElementSibling;
+    if (fullText.style.display === 'none') {
+      fullText.style.display = 'inline';
+      readMoreBtn.textContent = 'Sembunyikan';
+    } else {
+      fullText.style.display = 'none';
+      readMoreBtn.textContent = 'Selengkapnya';
+    }
+  });
+}
+
   // Animasi Scroll
   const revealableElements = document.querySelectorAll('.revealable');
   const observer = new IntersectionObserver((entries, obs) => {
