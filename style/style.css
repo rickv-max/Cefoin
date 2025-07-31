@@ -671,6 +671,7 @@ form button:disabled {
   color: #444;
   line-height: 1.6;
   margin-bottom: 15px; /* Jarak antar paragraf */
+  text-indent: 2em;
 }
 
 .full-text {
@@ -709,5 +710,8 @@ form button:disabled {
     aspect-ratio: 3 / 4;
     width: 100%;
     height: auto;
+  }
+  .caption-text {
+    text-indent: 1.5em; /* Reduksi indentasi pada ponsel untuk ruang terbatas */
   }
 }
