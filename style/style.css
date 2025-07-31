@@ -600,7 +600,6 @@ form button:disabled {
   font-weight: bold;
 }
 /* GALLERY SECTION */
-/* GALLERY SECTION */
 #gallery {
   padding: 80px 20px;
   background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);
@@ -611,14 +610,6 @@ form button:disabled {
   font-size: 32px;
   color: #2F855A;
   margin-bottom: 10px;
-}
-
-.gallery-content p {
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 40px;
-  max-width: 700px;
-  margin: 0 auto 40px auto;
 }
 
 .slider-container {
@@ -639,7 +630,7 @@ form button:disabled {
   height: auto;
   object-fit: contain;
   flex: 0 0 100%;
-  aspect-ratio: 3 / 4; /* Rasio default untuk ponsel (3:4) */
+  aspect-ratio: 3 / 4;
 }
 
 .slider-prev, .slider-next {
@@ -667,20 +658,52 @@ form button:disabled {
   background-color: #276749;
 }
 
+.gallery-caption {
+  margin-top: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.caption-text {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.full-text {
+  display: none;
+}
+
+.read-more-btn {
+  background-color: #2F855A;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.read-more-btn:hover {
+  background-color: #276749;
+}
+
 /* Responsif */
-@media (min-width: 769px) { /* Desktop (ubah breakpoint sesuai kebutuhan) */
+@media (min-width: 769px) {
   .slider img {
-    aspect-ratio: 4 / 3; /* Ubah rasio menjadi 4:3 di desktop */
+    aspect-ratio: 4 / 3;
   }
 }
 
-@media (max-width: 768px) { /* Ponsel */
+@media (max-width: 768px) {
   .slider-container {
     max-width: 90%;
   }
   
   .slider img {
-    aspect-ratio: 3 / 4; /* Tetap 3:4 di ponsel */
+    aspect-ratio: 3 / 4;
     width: 100%;
     height: auto;
   }
