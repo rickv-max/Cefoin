@@ -676,18 +676,18 @@ form button:disabled {
 }
 
 .read-more-btn {
-  background-color: #2F855A;
-  color: white;
+  color: #2F855A; /* Warna tema tanpa background */
+  text-decoration: underline; /* Gaya link biasa */
+  padding: 0;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 10px;
 }
 
 .read-more-btn:hover {
-  background-color: #276749;
+  color: #276749; /* Hover effect dengan warna lebih gelap */
+  text-decoration: none; /* Hilangkan underline saat hover jika diinginkan */
 }
 
 /* Responsif */
