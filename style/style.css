@@ -600,6 +600,7 @@ form button:disabled {
   font-weight: bold;
 }
 /* GALLERY SECTION */
+/* GALLERY SECTION */
 #gallery {
   padding: 80px 20px;
   background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);
@@ -623,6 +624,7 @@ form button:disabled {
 .slider-container {
   position: relative;
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -636,7 +638,7 @@ form button:disabled {
   width: 100%;
   max-width: 1000px;
   height: auto;
-  object-fit: cover;
+  object-fit: contain; /* Ubah dari cover ke contain agar tidak terdistorsi */
   flex: 0 0 100%;
 }
 
@@ -650,6 +652,7 @@ form button:disabled {
   padding: 10px;
   cursor: pointer;
   font-size: 18px;
+  z-index: 10; /* Pastikan tombol di atas gambar */
 }
 
 .slider-prev {
@@ -666,7 +669,12 @@ form button:disabled {
 
 /* Responsif */
 @media (max-width: 768px) {
+  .slider-container {
+    max-width: 90%; /* Mengurangi max-width pada layar kecil */
+  }
+  
   .slider img {
     width: 100%;
+    max-width: none; /* Membiarkan gambar menyesuaikan container */
   }
 }
