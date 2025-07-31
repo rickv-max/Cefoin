@@ -663,12 +663,14 @@ form button:disabled {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  text-align: left; /* Alignment kiri untuk paragraf rapi */
 }
 
 .caption-text {
   font-size: 16px;
   color: #444;
   line-height: 1.6;
+  margin-bottom: 15px; /* Jarak antar paragraf */
 }
 
 .full-text {
@@ -676,18 +678,19 @@ form button:disabled {
 }
 
 .read-more-btn {
-  color: #2F855A; /* Warna tema tanpa background */
-  text-decoration: underline; /* Gaya link biasa */
+  color: #2F855A;
+  text-decoration: underline;
   padding: 0;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 10px;
+  margin-top: 10px;
+  display: block; /* Membuat tombol di baris baru */
 }
 
 .read-more-btn:hover {
-  color: #276749; /* Hover effect dengan warna lebih gelap */
-  text-decoration: none; /* Hilangkan underline saat hover jika diinginkan */
+  color: #276749;
+  text-decoration: none;
 }
 
 /* Responsif */
