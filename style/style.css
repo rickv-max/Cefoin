@@ -827,12 +827,13 @@ form button:disabled {
     text-indent: 1.5em;
   }
 }
-/* === FOOTER STYLES === */
+/* === FOOTER STYLES - VERSI REVISI === */
 .site-footer {
-    background-color: #1E3A5F; /* Warna biru tua yang solid dan profesional */
-    color: #ffffff;
-    padding: 40px 0;
-    font-family: 'Poppins', sans-serif; /* Ganti dengan font web Anda jika berbeda */
+    background-color: #f8f9fa; /* DIUBAH: Latar belakang abu-abu sangat terang */
+    color: #343a40;             /* DIUBAH: Warna teks utama menjadi gelap */
+    padding: 50px 0;
+    font-family: 'Poppins', sans-serif; /* Sesuaikan dengan font Anda */
+    border-top: 1px solid #dee2e6; /* Garis tipis pemisah dari konten utama */
 }
 
 .footer-container {
@@ -841,25 +842,25 @@ form button:disabled {
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Agar responsif di layar kecil */
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 30px; /* Memberi jarak antar kolom */
 }
 
 /* Bagian Kiri: Logo dan Deskripsi */
 .footer-about {
-    flex: 2; /* Mengambil ruang lebih banyak */
-    min-width: 250px; /* Lebar minimum sebelum pindah baris */
+    flex: 2;
+    min-width: 250px;
 }
 
 .footer-logo {
-    height: 50px;  /* Sesuaikan ukuran logo */
+    height: 50px;
     margin-bottom: 15px;
 }
 
 .footer-about p {
     font-size: 14px;
     line-height: 1.6;
-    color: #bdc3c7; /* Warna abu-abu terang agar tidak terlalu kontras */
+    color: #6c757d; /* DIUBAH: Warna abu-abu untuk deskripsi */
 }
 
 /* Bagian Tengah: Link Navigasi */
@@ -873,9 +874,10 @@ form button:disabled {
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 10px;
+    color: #343a40; /* DIUBAH: Warna judul menjadi gelap */
 }
 
-/* Garis bawah dekoratif untuk judul */
+/* Garis bawah dekoratif */
 .footer-links h4::after, .footer-social h4::after {
     content: '';
     position: absolute;
@@ -883,7 +885,7 @@ form button:disabled {
     bottom: 0;
     width: 40px;
     height: 2px;
-    background-color: #2F855A; /* Warna aksen Anda */
+    background-color: #2F855A; /* Warna aksen hijau Anda tetap bagus */
 }
 
 .footer-links ul {
@@ -896,21 +898,20 @@ form button:disabled {
 }
 
 .footer-links ul li a {
-    color: #ffffff;
+    color: #6c757d; /* DIUBAH: Warna link menjadi abu-abu */
     text-decoration: none;
     transition: color 0.3s ease, padding-left 0.3s ease;
 }
 
 .footer-links ul li a:hover {
     color: #2F855A; /* Warna aksen saat hover */
-    padding-left: 5px; /* Efek geser kecil saat hover */
+    padding-left: 5px;
 }
 
 /* Bagian Kanan: Sosial Media */
 .footer-social {
     flex: 1;
     min-width: 150px;
-    text-align: left; /* Teks rata kiri di desktop */
 }
 
 .social-icon {
@@ -920,47 +921,54 @@ form button:disabled {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background-color: #e9ecef; /* DIUBAH: Latar ikon abu-abu agar kontras */
+    color: #343a40;           /* DIUBAH: Warna ikon menjadi gelap */
     font-size: 20px;
     text-decoration: none;
     margin-right: 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    background-color: #2F855A; /* Warna aksen saat hover */
-    transform: translateY(-3px); /* Efek sedikit terangkat */
+    background-color: #2F855A;
+    color: #ffffff; /* DIUBAH: Warna ikon menjadi putih saat hover */
+    transform: translateY(-3px);
 }
 
 /* Bagian Bawah: Copyright */
 .footer-bottom {
     text-align: center;
-    padding: 20px 0;
-    margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    margin-top: 40px;
+    border-top: 1px solid #dee2e6; /* DIUBAH: Warna garis pemisah */
 }
 
 .footer-bottom p {
     margin: 0;
     font-size: 14px;
-    color: #bdc3c7;
+    color: #6c757d;
 }
 
-/* Media Query untuk Tablet dan Ponsel */
+/* === PERBAIKAN TAMPILAN PONSEL === */
 @media (max-width: 768px) {
     .footer-container {
-        flex-direction: column; /* Susun semua bagian secara vertikal */
-        text-align: center; /* Pusatkan teks untuk semua bagian */
+        flex-direction: column;
+        text-align: center; /* Pusatkan semua teks di dalam kolom */
     }
 
+    /* Memastikan setiap bagian punya jarak yang cukup saat ditumpuk */
+    .footer-about, .footer-links, .footer-social {
+        margin-bottom: 20px;
+    }
+
+    /* Pusatkan garis bawah judul */
     .footer-links h4::after, .footer-social h4::after {
         left: 50%;
-        transform: translateX(-50%); /* Pusatkan garis bawah judul */
+        transform: translateX(-50%);
     }
 
-    .footer-social {
-        text-align: center; /* Pusatkan ikon sosial media */
-        margin-top: 20px;
+    /* Pusatkan link navigasi */
+    .footer-links ul {
+        padding: 0;
     }
 }
