@@ -136,6 +136,29 @@ header {
         margin-left: 0;
     }
 }
+.sidebar-header {
+    padding: 20px;                     /* Memberi ruang di sekitar logo */
+    text-align: center;                /* Memusatkan logo */
+    border-bottom: 1px solid #e2e8f0;  /* Garis pemisah (opsional) */
+}
+
+/* 2. Aturan untuk gambar logo itu sendiri */
+.sidebar-header img {
+    height: 50px;       /* Mengatur tinggi logo */
+    max-width: 80%;     /* Memastikan logo tidak terlalu lebar */
+}
+
+/* 3. Penyesuaian kecil agar tata letak sempurna (sangat direkomendasikan) */
+.sidebar {
+    /* Hapus 'padding: 20px;' dari aturan .sidebar Anda yang lama jika ada */
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links {
+    padding-left: 20px;  /* Memberi padding kembali untuk link menu */
+    padding-right: 20px;
+}
 
 /* HERO */
 #hero {
