@@ -9,21 +9,23 @@
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo">
-        <a href="index.html#hero">
-          <img src="https://github.com/rickv-max/Cefoin/raw/refs/heads/main/images/IMG_2047.png" alt="Logo CEFOIN" />
-        </a>
-      </div>
-      <div id="hamburger" class="hamburger">☰</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#hero">Beranda</a></li>
-        <li><a href="layanan.html">Layanan</a></li>
-        <li><a href="program.html">Program</a></li>
-        <li><a href="tim.html">Tim Kami</a></li>
-      </ul>
-    </nav>
-  </header>
+    <nav class="navbar">
+            <div class="logo">
+                <img src="images/IMG_2047.png" alt="CEFOIN Logo">
+            </div>
+            <div id="sidebar-toggle" class="sidebar-toggle">☰</div> <!-- Tombol toggle sidebar -->
+        </nav>
+    </header>
+    <div class="sidebar" id="sidebar">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="program.html">Program Cefoin</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="tim.html">Tim Cefoin</a></li>
+        </ul>
+        <button id="close-sidebar" class="close-btn">×</button> <!-- Tombol tutup sidebar -->
+    </div>
+  <div class="main-content">
 
   <section id="tim">
   <h2>Tim Kami</h2>
