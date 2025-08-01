@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #F7FAFC; /* abu putih muda */
-  color: #2D3748; /* abu gelap */
+  background-color: #F7FAFC;
+  color: #2D3748;
   line-height: 1.6;
 }
 
@@ -19,7 +19,7 @@ a {
 
 /* HEADER */
 header {
-  background-color: #ffffff; /* putih */
+  background-color: #ffffff;
   padding: 8px 16px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   position: sticky;
@@ -39,8 +39,14 @@ header {
     z-index: 1001;
 }
 
+.logo {
+    z-index: 999; /* Di bawah sidebar-toggle */
+}
+
 .logo img {
     height: 50px;
+    max-width: 150px; /* Batasi ukuran agar tidak terlalu besar */
+    display: block; /* Pastikan tidak ada overflow */
 }
 
 .sidebar-toggle {
@@ -49,24 +55,26 @@ header {
     cursor: pointer;
     background: none;
     border: none;
-    z-index: 1002;
+    z-index: 1003; /* Di atas navbar dan logo */
+    position: relative;
+    padding: 5px; /* Tambah padding untuk area klik */
 }
 
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px; /* Mulai dari luar layar */
+    left: -250px;
     width: 250px;
     height: 100%;
     background-color: #fff;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease;
-    z-index: 1000;
+    z-index: 1002; /* Di atas navbar, di bawah toggle */
 }
 
 .sidebar.active {
-    left: 0; /* Muncul saat active */
+    left: 0;
 }
 
 .nav-links {
@@ -98,6 +106,7 @@ header {
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1004; /* Di atas sidebar */
 }
 
 .main-content {
@@ -106,7 +115,7 @@ header {
 }
 
 .sidebar.active ~ .main-content {
-    margin-left: 250px; /* Geser konten utama saat sidebar terbuka */
+    margin-left: 250px;
 }
 
 @media (max-width: 768px) {
@@ -123,7 +132,7 @@ header {
     }
 
     .sidebar.active ~ .main-content {
-        margin-left: 0; /* Di mobile, konten tidak bergeser, sidebar overlay */
+        margin-left: 0;
     }
 }
 
@@ -163,7 +172,7 @@ header {
 }
 
 .btn-primary {
-  background-color: #2F855A; /* emerald */
+  background-color: #2F855A;
   color: #fff;
   border: none;
   padding: 12px 28px;
@@ -226,7 +235,6 @@ header {
   color: #555;
 }
 
-
 /* ====== PROGRAM ====== */
 #program {
   padding: 80px 20px;
@@ -277,11 +285,10 @@ header {
   color: #555;
 }
 
-
 /* ==== TIM KAMI ==== */
 #tim {
   padding: 80px 20px;
-  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);  /* Ini menggantikan warna solid */
+  background: linear-gradient(to bottom, #e0f2f1, #f9f9f9);
   text-align: center;
 }
 
@@ -438,33 +445,29 @@ form button:disabled {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  #navLinks {
-    display: none;
-    flex-direction: column;
-    background-color: #ffffff;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+    .sidebar {
+        left: -250px;
+    }
 
-  #navLinks.active {
-    display: flex;
-  }
+    .sidebar.active {
+        left: 0;
+    }
 
-  .hamburger {
-    display: block;
-  }
+    .main-content {
+        margin-left: 0;
+    }
 
-  #hero {
-    padding: 80px 20px;
-  }
+    .sidebar.active ~ .main-content {
+        margin-left: 0;
+    }
 
-  .hero-content h1 {
-    font-size: 26px;
-  }
+    #hero {
+        padding: 80px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 26px;
+    }
 }
 
 /* AJUKAN BANTUAN MODAL */
@@ -529,6 +532,7 @@ form button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
 .ajukan-modal-box label {
   font-weight: bold;
   color: #2D3748;
@@ -553,6 +557,7 @@ form button:disabled {
   color: #718096;
   margin-bottom: 14px;
 }
+
 @media (max-width: 600px) {
   .ajukan-modal-box {
     max-height: 90vh;
@@ -572,6 +577,7 @@ form button:disabled {
     font-size: 14px;
   }
 }
+
 /* FAQ Accordion */
 .faq-section {
   padding: 60px 20px;
@@ -617,6 +623,7 @@ form button:disabled {
   color: #2D3748;
   background-color: #fefefe;
 }
+
 .accordion-item {
   border-top: 1px solid #CBD5E0;
   padding: 10px 0;
@@ -651,6 +658,7 @@ form button:disabled {
   padding-left: 20px;
   list-style: disc;
 }
+
 .legalitas-img {
   display: block;
   max-width: 100%;
@@ -659,10 +667,12 @@ form button:disabled {
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
 .highlight-merah {
-  color: #d32f2f; /* merah elegan */
+  color: #d32f2f;
   font-weight: bold;
 }
+
 /* GALLERY SECTION */
 #gallery {
   padding: 80px 20px;
@@ -675,10 +685,10 @@ form button:disabled {
 
 .gallery-content h2 {
   font-size: 18px;
-  color: #000000; /* Ubah dari #2F855A ke hitam */
+  color: #000000;
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* Tetap tebal untuk kesan modern */
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
@@ -743,14 +753,14 @@ form button:disabled {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  text-align: left; /* Alignment kiri untuk paragraf rapi */
+  text-align: left;
 }
 
 .caption-text {
   font-size: 16px;
   color: #444;
   line-height: 1.6;
-  margin-bottom: 12px; /* Jarak antar paragraf */
+  margin-bottom: 12px;
   text-indent: 2em;
 }
 
@@ -766,7 +776,7 @@ form button:disabled {
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
-  display: block; /* Membuat tombol di baris baru */
+  display: block;
 }
 
 .read-more-btn:hover {
@@ -790,6 +800,6 @@ form button:disabled {
     height: auto;
   }
   .caption-text {
-    text-indent: 1.5em; /* Reduksi indentasi pada ponsel untuk ruang terbatas */
+    text-indent: 1.5em;
   }
 }
