@@ -5,13 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCloseBtn = document.querySelector('.modal-close-btn');
     const contactForm = document.getElementById('ajukan-form');
     const submitBtn = document.getElementById('submit-form-btn');
+
     const requiredFields = contactForm ? contactForm.querySelectorAll('[required]') : [];
 
     function checkFormValidity() {
-        let allFilled = true;
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) allFilled = false;
-        });
+        const allFilled = Array.from(requiredFields).every(field => field.value.trim());
         submitBtn.disabled = !allFilled;
     }
 
@@ -20,24 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (openModalBtn && contactModal && modalCloseBtn) {
+        function toggleModal(open = true) {
+            contactModal.classList.toggle('active', open);
+            document.body.classList.toggle('no-scroll', open);
+            if (open) checkFormValidity();
+        }
+
         openModalBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            contactModal.classList.add('active');
-            document.body.classList.add('no-scroll');
-            checkFormValidity();
+            toggleModal(true);
         });
 
-        modalCloseBtn.addEventListener('click', () => {
-            contactModal.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
+        modalCloseBtn.addEventListener('click', () => toggleModal(false));
 
         contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
+            if (e.target === contactModal) toggleModal(false);
         });
+    } else if (!contactModal || !openModalBtn || !modalCloseBtn) {
+        console.warn('Modal elements missing:', { openModalBtn, contactModal, modalCloseBtn });
     }
 
     // Slider Handling
@@ -47,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.slider-next');
     let currentSlide = 0;
     const slideInterval = 3000;
+    let autoSlide;
 
     function showSlide(index) {
         if (index >= slides.length) currentSlide = 0;
@@ -55,33 +54,28 @@ document.addEventListener('DOMContentLoaded', () => {
         slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
-    function nextSlide() {
-        showSlide(currentSlide + 1);
+    function startAutoSlide() {
+        autoSlide = setInterval(() => showSlide(currentSlide + 1), slideInterval);
     }
 
-    function prevSlide() {
-        showSlide(currentSlide - 1);
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
     }
 
-    let autoSlide = setInterval(nextSlide, slideInterval);
+    function updateSlide(index) {
+        stopAutoSlide();
+        showSlide(index);
+        startAutoSlide();
+    }
 
-    if (prevBtn && nextBtn && slider) {
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            clearInterval(autoSlide);
-            autoSlide = setInterval(nextSlide, slideInterval);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            clearInterval(autoSlide);
-            autoSlide = setInterval(nextSlide, slideInterval);
-        });
-
-        slider.addEventListener('mouseenter', () => clearInterval(autoSlide));
-        slider.addEventListener('mouseleave', () => {
-            autoSlide = setInterval(nextSlide, slideInterval);
-        });
+    if (prevBtn && nextBtn && slider && slides.length) {
+        startAutoSlide();
+        prevBtn.addEventListener('click', () => updateSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => updateSlide(currentSlide + 1));
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+    } else {
+        console.warn('Slider elements missing or no slides found:', { prevBtn, nextBtn, slider, slides });
     }
 
     // Toggle Teks Selengkapnya
@@ -90,26 +84,32 @@ document.addEventListener('DOMContentLoaded', () => {
         readMoreBtn.addEventListener('click', (e) => {
             e.preventDefault();
             const fullTexts = document.querySelectorAll('.full-text');
-            const isHidden = fullTexts[0].style.display === 'none';
+            const isHidden = fullTexts[0].style.display === 'none' || !fullTexts[0].style.display;
             fullTexts.forEach(text => {
                 text.style.display = isHidden ? 'block' : 'none';
             });
             readMoreBtn.textContent = isHidden ? 'Sembunyikan' : '…Selengkapnya';
         });
+    } else {
+        console.warn('Read more button not found');
     }
 
     // Animasi Scroll
     const revealableElements = document.querySelectorAll('.revealable');
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
+    if (revealableElements.length) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
 
-    revealableElements.forEach(el => observer.observe(el));
+        revealableElements.forEach(el => observer.observe(el));
+    } else {
+        console.warn('No revealable elements found');
+    }
 
     // Sidebar Toggle
     const sidebarToggle = document.querySelector('#sidebar-toggle');
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('.main-content');
 
     if (sidebarToggle && sidebar && closeBtn && mainContent) {
-        console.log('Elements found');
+        console.log('Sidebar elements found');
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             mainContent.classList.toggle('sidebar-open');
@@ -130,29 +130,50 @@ document.addEventListener('DOMContentLoaded', () => {
             mainContent.classList.remove('sidebar-open');
             console.log('Sidebar closed');
         });
-    } else {
-        console.log('One or more elements not found:', {
-            sidebarToggle,
-            sidebar,
-            closeBtn,
-            mainContent
+
+        // Tambah penutup saat klik di luar sidebar
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target) && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                mainContent.classList.remove('sidebar-open');
+                console.log('Sidebar closed by outside click');
+            }
         });
+    } else {
+        console.warn('Sidebar elements missing:', { sidebarToggle, sidebar, closeBtn, mainContent });
     }
 
     // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const answer = btn.nextElementSibling;
-            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    if (faqQuestions.length) {
+        faqQuestions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
         });
-    });
+    } else {
+        console.warn('No FAQ questions found');
+    }
 
     // Accordion untuk Visi, Misi, Struktur, Legalitas
-    document.querySelectorAll('.accordion-header').forEach(item => {
-        item.addEventListener('click', () => {
-            item.classList.toggle('active');
-            const body = item.nextElementSibling;
-            body.classList.toggle('active');
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    if (accordionHeaders.length) {
+        accordionHeaders.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+                const body = item.nextElementSibling;
+                body.classList.toggle('active');
+                // Tutup accordion lain jika ada
+                accordionHeaders.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.nextElementSibling.classList.remove('active');
+                    }
+                });
+            });
         });
-    });
+    } else {
+        console.warn('No accordion headers found');
+    }
 });
