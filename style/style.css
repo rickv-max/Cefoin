@@ -674,7 +674,6 @@ form button:disabled {
   height: auto;
   object-fit: contain;
   flex: 0 0 100%;
-  aspect-ratio: 3 / 4;
 }
 
 .slider-prev, .slider-next {
@@ -741,7 +740,6 @@ form button:disabled {
 /* Responsif */
 @media (min-width: 769px) {
   .slider img {
-    aspect-ratio: 4 / 3;
   }
 }
 
@@ -751,7 +749,6 @@ form button:disabled {
   }
   
   .slider img {
-    aspect-ratio: 3 / 4;
     width: 100%;
     height: auto;
   }
