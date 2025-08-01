@@ -27,67 +27,104 @@ header {
   z-index: 1000;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1001;
 }
 
 .logo img {
-  max-height: 60px; /* atau 36px kalau mau lebih kecil */
-  height: auto;
-  width: auto;
-  display: block;
+    height: 50px;
+}
+
+.sidebar-toggle {
+    font-size: 28px;
+    color: #1E3A5F;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1002;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Mulai dari luar layar */
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Muncul saat active */
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 24px;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 15px 0;
 }
 
 .nav-links li a {
-  color: #1E3A5F; /* navy */
-  font-weight: bold;
-  transition: 0.3s;
+    color: #1E3A5F;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .nav-links li a:hover {
-  color: #2F855A; /* emerald */
+    color: #2F855A;
 }
 
-.hamburger {
-  display: none;
-  font-size: 28px;
-  color: #1E3A5F;
-  cursor: pointer;
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #1E3A5F;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.main-content {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.active ~ .main-content {
+    margin-left: 250px; /* Geser konten utama saat sidebar terbuka */
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff; /* Latar belakang putih untuk menu */
-    padding: 20px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek modern */
-  }
+    .sidebar {
+        left: -250px;
+    }
 
-  .nav-links.active {
-    display: flex; /* Menampilkan menu saat class 'active' ditambahkan */
-  }
+    .sidebar.active {
+        left: 0;
+    }
 
-  .nav-links li {
-    margin: 10px 0;
-    text-align: center;
-  }
+    .main-content {
+        margin-left: 0;
+    }
 
-  .hamburger {
-    display: block; /* Menampilkan hamburger di mobile */
-  }
+    .sidebar.active ~ .main-content {
+        margin-left: 0; /* Di mobile, konten tidak bergeser, sidebar overlay */
+    }
 }
 
 /* HERO */
