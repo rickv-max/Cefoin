@@ -19,12 +19,12 @@ a {
 
 /* HEADER */
 header {
-  background-color: #ffffff;
-  padding: 8px 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background-color: #ffffff;
+    padding: 8px 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 /* Navbar */
@@ -32,23 +32,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Kurangi padding untuk ruang lebih longgar */
+    padding: 10px 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
-    z-index: 1001;
 }
 
 .logo {
-    z-index: 999; /* Di bawah sidebar-toggle */
-    max-width: 150px; /* Batasi lebar logo */
+    z-index: 999;
+    max-width: 150px;
 }
 
 .logo img {
     height: 50px;
-    max-width: 100%; /* Pastikan tidak melebihi container */
-    display: block; /* Hapus ruang bawah gambar */
-    margin: 0; /* Hapus margin default */
+    max-width: 100%;
+    display: block;
+    margin: 0;
 }
 
 .sidebar-toggle {
@@ -57,10 +56,9 @@ header {
     cursor: pointer;
     background: none;
     border: none;
-    z-index: 1003; /* Di atas navbar dan logo */
+    z-index: 1003;
     position: relative;
-    padding: 10px; /* Perluas area klik */
-    line-height: 1; /* Pastikan teks tidak memengaruhi tinggi */
+    padding: 5px;
 }
 
 .sidebar {
