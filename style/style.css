@@ -32,7 +32,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px; /* Kurangi padding untuk ruang lebih longgar */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -41,12 +41,14 @@ header {
 
 .logo {
     z-index: 999; /* Di bawah sidebar-toggle */
+    max-width: 150px; /* Batasi lebar logo */
 }
 
 .logo img {
     height: 50px;
-    max-width: 150px; /* Batasi ukuran agar tidak terlalu besar */
-    display: block; /* Pastikan tidak ada overflow */
+    max-width: 100%; /* Pastikan tidak melebihi container */
+    display: block; /* Hapus ruang bawah gambar */
+    margin: 0; /* Hapus margin default */
 }
 
 .sidebar-toggle {
@@ -57,7 +59,8 @@ header {
     border: none;
     z-index: 1003; /* Di atas navbar dan logo */
     position: relative;
-    padding: 5px; /* Tambah padding untuk area klik */
+    padding: 10px; /* Perluas area klik */
+    line-height: 1; /* Pastikan teks tidak memengaruhi tinggi */
 }
 
 .sidebar {
@@ -70,7 +73,7 @@ header {
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     transition: left 0.3s ease;
-    z-index: 1002; /* Di atas navbar, di bawah toggle */
+    z-index: 1002;
 }
 
 .sidebar.active {
@@ -106,7 +109,7 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1004; /* Di atas sidebar */
+    z-index: 1004;
 }
 
 .main-content {
