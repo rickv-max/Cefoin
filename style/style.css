@@ -827,3 +827,140 @@ form button:disabled {
     text-indent: 1.5em;
   }
 }
+/* === FOOTER STYLES === */
+.site-footer {
+    background-color: #1E3A5F; /* Warna biru tua yang solid dan profesional */
+    color: #ffffff;
+    padding: 40px 0;
+    font-family: 'Poppins', sans-serif; /* Ganti dengan font web Anda jika berbeda */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+    gap: 20px;
+}
+
+/* Bagian Kiri: Logo dan Deskripsi */
+.footer-about {
+    flex: 2; /* Mengambil ruang lebih banyak */
+    min-width: 250px; /* Lebar minimum sebelum pindah baris */
+}
+
+.footer-logo {
+    height: 50px;  /* Sesuaikan ukuran logo */
+    margin-bottom: 15px;
+}
+
+.footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #bdc3c7; /* Warna abu-abu terang agar tidak terlalu kontras */
+}
+
+/* Bagian Tengah: Link Navigasi */
+.footer-links {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-links h4, .footer-social h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Garis bawah dekoratif untuk judul */
+.footer-links h4::after, .footer-social h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #2F855A; /* Warna aksen Anda */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #2F855A; /* Warna aksen saat hover */
+    padding-left: 5px; /* Efek geser kecil saat hover */
+}
+
+/* Bagian Kanan: Sosial Media */
+.footer-social {
+    flex: 1;
+    min-width: 150px;
+    text-align: left; /* Teks rata kiri di desktop */
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #2F855A; /* Warna aksen saat hover */
+    transform: translateY(-3px); /* Efek sedikit terangkat */
+}
+
+/* Bagian Bawah: Copyright */
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: #bdc3c7;
+}
+
+/* Media Query untuk Tablet dan Ponsel */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Susun semua bagian secara vertikal */
+        text-align: center; /* Pusatkan teks untuk semua bagian */
+    }
+
+    .footer-links h4::after, .footer-social h4::after {
+        left: 50%;
+        transform: translateX(-50%); /* Pusatkan garis bawah judul */
+    }
+
+    .footer-social {
+        text-align: center; /* Pusatkan ikon sosial media */
+        margin-top: 20px;
+    }
+}
