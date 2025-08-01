@@ -144,8 +144,8 @@ header {
 
 /* 2. Aturan untuk gambar logo itu sendiri */
 .sidebar-header img {
-    height: 50px;       /* Mengatur tinggi logo */
-    max-width: 80%;     /* Memastikan logo tidak terlalu lebar */
+    height: 70px;       /* Mengatur tinggi logo */
+    max-width: 90%;     /* Memastikan logo tidak terlalu lebar */
 }
 
 /* 3. Penyesuaian kecil agar tata letak sempurna (sangat direkomendasikan) */
